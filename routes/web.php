@@ -28,8 +28,8 @@ use App\Http\Controllers\Dashboard\TagController;
 
 Auth::routes();
 
-// Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [FrontendController::class, 'index'])->name('index');
 
 Route::get('/products', [FrontendController::class, 'products'])->name('frontend.products');
 Route::get('/products/detail', [FrontendController::class, 'productsdetail'])->name('frontend.products.detail');
