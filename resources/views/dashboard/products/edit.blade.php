@@ -20,8 +20,9 @@
                     </div>
                 </div>
                 <!-- end page title -->
-                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
@@ -39,7 +40,7 @@
                                             <div class="mb-3">
                                                 <label for="productTitle" class="form-label">Product Title
                                                     <span class="text-danger">*</span></label>
-                                                <input type="text" name="name" class="form-control" id="productTitle"
+                                                <input type="text" name="name" value="{{ $product->name }}" class="form-control" id="productTitle"
                                                     placeholder="Enter product title" required />
                                             </div>
                                             <div class="mb-3">
@@ -55,16 +56,6 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            {{-- <div class="mb-3">
-                                                <label for="productType" class="form-label">Product Type
-                                                    <span class="text-danger">*</span></label>
-                                                <select class="form-control" data-choices name="productType"
-                                                    id="productType">
-                                                    <option value="">Select Type</option>
-                                                    <option value="Simple">Simple</option>
-                                                    <option value="Classified">Classified</option>
-                                                </select>
-                                            </div> --}}
                                             <div class="mb-3">
                                                 <label for="shortDecs" class="form-label">Short Description
                                                     <span class="text-danger">*</span></label>
@@ -84,8 +75,6 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
-                                                        {{-- <input type="text" class="form-control" id="productBrand"
-                                                            placeholder="Enter brand" required /> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -106,6 +95,7 @@
                                             <div class="mb-3">
                                                 <div id="hash_tags" class="mb-3">
                                                     <label for="tags">Tags</label><br>
+                                                    <input type="" name="tags[]" value="">
                                                     <div class="row">
                                                         <div class="col-8">
                                                             <input type="text" id="tagInput" class="form-control"
@@ -167,7 +157,6 @@
                                                 <label class="form-label">Product Description
                                                     <span class="text-danger">*</span></label>
                                                 <textarea class="form-control" id="description" name="description" placeholder="Description" rows="5"></textarea>
-                                                {{-- <div class="ckeditor-classic"></div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -367,21 +356,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!--end col-->
-                                                {{-- <div class="col-lg-6">
-                                                <div>
-                                                    <label for="choices-publish-status-input"
-                                                        class="form-label">Status</label>
-                                                    <select class="form-select" id="choices-publish-status-input"
-                                                        data-choices data-choices-search-false>
-                                                        <option value="Published" selected>
-                                                            Published
-                                                        </option>
-                                                        <option value="Scheduled">Scheduled</option>
-                                                        <option value="Draft">Draft</option>
-                                                    </select>
-                                                </div>
-                                            </div> --}}
                                                 <!--end col-->
                                                 <div class="col-lg-6">
                                                     <div>

@@ -28,13 +28,8 @@
                                     <p class="text-muted">Total Products</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            <span class="counter-value" data-target="184">0</span>
+                                            <span class="counter-value">{{ count($products) }}</span>
                                         </h4>
-                                        <p class="mb-0 text-muted">
-                                            <span class="flex-shrink-0 badge bg-success-subtle text-success rounded-pill"><i
-                                                    class="ph ph-trend-up align-middle me-1"></i>
-                                                0.2%</span>
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +83,7 @@
                 </div>
 
                 <div id="productList">
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
@@ -166,7 +161,7 @@
                             </div>
                         </div>
                         <!--end col-->
-                    </div>
+                    </div> --}}
                     <!--end row-->
 
                     <div class="row">
@@ -182,11 +177,10 @@
                                                 onClick="deleteMultiple()">
                                                 <i class="ri-delete-bin-2-line"></i>
                                             </button>
-                                            <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal"
-                                                data-bs-target="#showModal">
+                                            <a class="btn btn-primary add-btn" href="{{ route('products.create') }}">
                                                 <i class="bi bi-plus-circle align-baseline me-1"></i>
                                                 Add Product
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -195,13 +189,6 @@
                                         <table class="table table-custom align-middle table-borderless table-nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                value="option" id="checkAll" />
-                                                            <label class="form-check-label" for="checkAll"></label>
-                                                        </div>
-                                                    </th>
                                                     <th class="sort cursor-pointer" data-sort="products">
                                                         Products
                                                     </th>
@@ -227,75 +214,71 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="list form-check-all">
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                name="chk_child" />
-                                                            <label class="form-check-label"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="id" style="display: none">
-                                                        <a href="javascript:void(0);"
-                                                            class="fw-medium link-primary">#TB01</a>
-                                                    </td>
-                                                    <td class="products">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-xs bg-light rounded p-1 me-2">
-                                                                <img src="assets/images/products/32/img-1.png"
-                                                                    alt="" class="img-fluid d-block" />
+                                                @foreach ($products as $item)
+                                                    <tr>
+                                                        <td class="id" style="display: none">
+                                                            <a href="javascript:void(0);"
+                                                                class="fw-medium link-primary">#TB01</a>
+                                                        </td>
+                                                        <td class="products">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar-xs bg-light rounded p-1 me-2">
+                                                                    <img src="assets/images/products/32/img-1.png"
+                                                                        alt="" class="img-fluid d-block" />
+                                                                </div>
+                                                                <div>
+                                                                    <h6 class="mb-0">
+                                                                        <a href="apps-ecommerce-product-details.html"
+                                                                            class="text-reset products">{{ $item->name }}</a>
+                                                                    </h6>
+                                                                </div>
                                                             </div>
-                                                            <div>
-                                                                <h6 class="mb-0">
-                                                                    <a href="apps-ecommerce-product-details.html"
-                                                                        class="text-reset products">Branded T-Shirts</a>
-                                                                </h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="discount d-none">Fashion</td>
-                                                    <td class="category">Fashion</td>
-                                                    <td class="stock">12</td>
-                                                    <td class="price">$215.00</td>
-                                                    <td class="orders">48</td>
-                                                    <td class="rating">
-                                                        <span class="badge bg-warning-subtle text-warning"><i
-                                                                class="bi bi-star-fill align-baseline me-1"></i>
-                                                            4.9</span>
-                                                    </td>
-                                                    <td class="published">12 Oct, 2022</td>
-                                                    <td>
-                                                        <div class="dropdown position-static">
-                                                            <button class="btn btn-subtle-secondary btn-sm btn-icon"
-                                                                role="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                                <i class="bi bi-three-dots-vertical"></i>
-                                                            </button>
+                                                        </td>
+                                                        <td class="discount d-none">Fashion</td>
+                                                        <td class="category">{{ $item->category->name }}</td>
+                                                        <td class="stock">{{ $item->quantity }}</td>
+                                                        <td class="price">${{ $item->price }}</td>
+                                                        <td class="orders">48</td>
+                                                        <td class="rating">
+                                                            <span class="badge bg-warning-subtle text-warning"><i
+                                                                    class="bi bi-star-fill align-baseline me-1"></i>
+                                                                4.9</span>
+                                                        </td>
+                                                        <td class="published">{{ $item->created_at->format('d M, Y') }}
+                                                        </td>
+                                                        <td>
+                                                            <div class="dropdown position-static">
+                                                                <button class="btn btn-subtle-secondary btn-sm btn-icon"
+                                                                    role="button" data-bs-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                                </button>
 
-                                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                                <li>
+                                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                                    {{-- <li>
                                                                     <a class="dropdown-item"
                                                                         href="apps-ecommerce-product-details.html"><i
                                                                             class="ph-eye align-middle me-1"></i>
                                                                         View</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item edit-item-btn"
-                                                                        data-bs-toggle="modal" href="#showModal"><i
-                                                                            class="ph-pencil align-middle me-1"></i>
-                                                                        Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item remove-item-btn"
-                                                                        data-bs-toggle="modal"
-                                                                        href="#deleteRecordModal"><i
-                                                                            class="ph-trash align-middle me-1"></i>
-                                                                        Remove</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                                </li> --}}
+                                                                    <li>
+                                                                        <a class="dropdown-item edit-item-btn"
+                                                                            href="{{ route('products.edit', $item->id) }}"><i
+                                                                                class="ph-pencil align-middle me-1"></i>
+                                                                            Edit</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a class="dropdown-item remove-item-btn"
+                                                                            data-bs-toggle="modal"
+                                                                            href="#deleteRecordModal"><i
+                                                                                class="ph-trash align-middle me-1"></i>
+                                                                            Remove</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

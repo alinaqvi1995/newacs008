@@ -9,6 +9,7 @@ class Tag extends Model
     protected $table = 'tags';
 
     protected $fillable = [
+        'product_id',
         'name',
         'status',
     ];
