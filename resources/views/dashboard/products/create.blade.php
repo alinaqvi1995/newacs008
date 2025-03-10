@@ -119,7 +119,7 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="form-check form-switch mb-3">
-                                                        <input class="form-check-input" name="exchangeable" type="checkbox"
+                                                        <input class="form-check-input" name="exchangeable" value="1" type="checkbox"
                                                             role="switch" id="exchangeableInput" />
                                                         <label class="form-check-label"
                                                             for="exchangeableInput">Exchangeable</label>
@@ -127,7 +127,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-check form-switch mb-3">
-                                                        <input class="form-check-input" name="refundable" type="checkbox"
+                                                        <input class="form-check-input" name="refundable" value="1" type="checkbox"
                                                             role="switch" id="refundableInput" />
                                                         <label class="form-check-label"
                                                             for="refundableInput">Refundable</label>
