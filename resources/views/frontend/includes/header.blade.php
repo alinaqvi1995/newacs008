@@ -15,7 +15,7 @@
                                             <i class="fas fa-mobile"></i>
                                         </div>
                                         <div class="text">
-                                            <p><a href="tel:923076806860">+ 92 ( 307 ) 68 - 06860</a></p>
+                                            <p><a href="tel:+923095320000">+ 92 ( 309 ) 53 - 20000</a></p>
                                         </div>
                                     </li>
                                     <li>
