@@ -27,7 +27,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->toArray());
         $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|exists:categories,id',
@@ -38,14 +37,14 @@ class ProductController extends Controller
             'quantity' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0|max:100',
-            'visibility' => 'nullable|string|in:Visible,Hidden',
+            'visibility' => 'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'tags' => 'nullable|array',
             'tags.*' => 'nullable|string|max:255',
         ]);
 
-        dd($request->toArray());
+        // dd($request->toArray());
 
         // Handle product image
         $imagePath = null;
