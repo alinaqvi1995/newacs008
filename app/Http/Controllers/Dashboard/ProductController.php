@@ -27,7 +27,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->toArray());
         $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|exists:categories,id',
@@ -44,6 +43,8 @@ class ProductController extends Controller
             'tags' => 'nullable|array',
             'tags.*' => 'nullable|string|max:255',
         ]);
+
+        dd($request->toArray());
 
         // Handle product image
         $imagePath = null;
