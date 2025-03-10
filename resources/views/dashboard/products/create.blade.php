@@ -50,9 +50,6 @@
                                                     @foreach ($categories as $category)
                                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                     @endforeach
-                                                    <option value="Other Accessories">
-                                                        Other Accessories
-                                                    </option>
                                                 </select>
                                             </div>
                                             {{-- <div class="mb-3">
