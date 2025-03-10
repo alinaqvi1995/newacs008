@@ -37,7 +37,7 @@ class ProductController extends Controller
             'quantity' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0|max:100',
-            'visibility' => 'required|string|in:Visible,Hidden',
+            'visibility' => 'nullable|string|in:Visible,Hidden',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'tags' => 'nullable|array',

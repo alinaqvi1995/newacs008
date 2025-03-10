@@ -357,7 +357,7 @@
                                                         <div class="input-group">
                                                             <span class="input-group-text"
                                                                 id="product-discount-addon">%</span>
-                                                            <input type="text" name="discount" class="form-control"
+                                                            <input type="number" name="discount" class="form-control"
                                                                 id="product-discount-input" placeholder="Enter discount"
                                                                 aria-label="discount"
                                                                 aria-describedby="product-discount-addon" />
