@@ -16,10 +16,11 @@
                         <div class="main-slider-three__categories">
                             <h3 class="main-slider-three__categories-title">All Categories</h3>
                             <ul class="main-slider-three__categories-list list-unstyled">
-                                <li><a href="{{ route('frontend.products') }}"><i class="icon-groceries"></i> Grocery & Forzen<span
-                                            class="fas fa-angle-right"></span></a>
+                                <li><a href="{{ route('frontend.products') }}"><i class="icon-groceries"></i> Grocery &
+                                        Forzen<span class="fas fa-angle-right"></span></a>
                                 </li>
-                                <li class="active"><a href="{{ route('frontend.products') }}"><i class="icon-fruit"></i> Fresh
+                                <li class="active"><a href="{{ route('frontend.products') }}"><i class="icon-fruit"></i>
+                                        Fresh
                                         Fruits<span class="fas fa-angle-right"></span></a>
                                 </li>
                                 <li><a href="{{ route('frontend.products') }}"><i class="icon-salad-1"></i> Salads<span
@@ -49,7 +50,8 @@
                 </div>
                 <div class="col-xl-9 col-lg-8">
                     <div class="main-slider-three__right">
-                        <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+                        <div class="swiper-container thm-swiper__slider"
+                            data-swiper-options='{"slidesPerView": 1, "loop": true,
                                 "effect": "fade",
                                 "pagination": {
                                 "el": "#main-slider-pagination",
@@ -79,8 +81,7 @@
                                             organic food
                                         </h2>
                                         <div class="main-slider-three__btn-box">
-                                            <a href="product-details.html"
-                                                class="thm-btn main-slider-three__btn">Shop
+                                            <a href="product-details.html" class="thm-btn main-slider-three__btn">Shop
                                                 now</a>
                                         </div>
                                     </div>
@@ -100,8 +101,7 @@
                                             organic food
                                         </h2>
                                         <div class="main-slider-three__btn-box">
-                                            <a href="product-details.html"
-                                                class="thm-btn main-slider-three__btn">Shop
+                                            <a href="product-details.html" class="thm-btn main-slider-three__btn">Shop
                                                 now</a>
                                         </div>
                                     </div>
@@ -121,8 +121,7 @@
                                             organic food
                                         </h2>
                                         <div class="main-slider-three__btn-box">
-                                            <a href="product-details.html"
-                                                class="thm-btn main-slider-three__btn">Shop
+                                            <a href="product-details.html" class="thm-btn main-slider-three__btn">Shop
                                                 now</a>
                                         </div>
                                     </div>
@@ -191,41 +190,45 @@
             <div class="section-title text-center">
                 <span class="section-title__tagline">Checkout New Products</span>
                 <h2 class="section-title__title">Today’s new hotest products
-                    <br> available now</h2>
+                    <br> available now
+                </h2>
             </div>
             <div class="row">
                 <!-- Hot Products Two Single Start -->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                    <div class="hot-products__single">
-                        <div class="hot-products__single-inner">
-                            <div class="hot-products__img-box">
-                                <div class="hot-products__img">
-                                    <img src="frontend/assets/images/resources/hot-product-1-1.webp" alt="">
+                @foreach ($products as $product)
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="hot-products__single">
+                            <div class="hot-products__single-inner">
+                                <div class="hot-products__img-box">
+                                    <div class="hot-products__img">
+                                        {{-- <img src="frontend/assets/images/resources/hot-product-1-1.webp" alt=""> --}}
+                                        <img src="{{ asset($product->image) }}" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="hot-products__content">
-                                <div class="hot-products__rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                                <div class="hot-products__content">
+                                    <div class="hot-products__rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <h3 class="hot-products__title"><a href="product-details.html">{{ $product->name }}</a></h3>
+                                    <p class="hot-products__price">RS {{ number_format($product->price, 2) }}</p>
+                                    <div class="hot-products__btn-box">
+                                        <a href="cart.html" class="hot-products__btn thm-btn">Add to cart</a>
+                                    </div>
                                 </div>
-                                <h3 class="hot-products__title"><a href="product-details.html">Bananas</a></h3>
-                                <p class="hot-products__price">RS 18.00</p>
-                                <div class="hot-products__btn-box">
-                                    <a href="cart.html" class="hot-products__btn thm-btn">Add to cart</a>
+                                <div class="hot-products__icon-boxes">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-eye"></i></a>
                                 </div>
-                            </div>
-                            <div class="hot-products__icon-boxes">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="fas fa-eye"></i></a>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
                 <!-- Hot Products Two Single End -->
-                <!-- Hot Products Two Single Start -->
+                {{-- <!-- Hot Products Two Single Start -->
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
                     <div class="hot-products__single">
                         <div class="hot-products__single-inner">
@@ -317,7 +320,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Hot Products Two Single End -->
+                <!-- Hot Products Two Single End --> --}}
             </div>
         </div>
     </section>
@@ -353,7 +356,8 @@
                             <div class="banner-three__middle-title-box">
                                 <p class="banner-three__middle-tagline">20%</p>
                                 <h3 class="banner-three__middle-title">on All Healthy
-                                    <br> Beverages</h3>
+                                    <br> Beverages
+                                </h3>
                             </div>
                             <div class="banner-three__middle-btn-box">
                                 <a href="product-details.html" class="banner-three__middle-btn thm-btn">Shop now</a>
@@ -385,7 +389,8 @@
     </section>
     <section class="brand-one">
         <div class="container">
-            <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
+            <div class="thm-swiper__slider swiper-container"
+                data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
                 "0": {
                     "spaceBetween": 30,
                     "slidesPerView": 2
@@ -582,7 +587,8 @@
                 <span class="section-title__tagline">Checkout Products</span>
                 <h2 class="section-title__title">Hot deals of the day & <br> purchase now</h2>
             </div>
-            <div class="hot-product-three__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
+            <div class="hot-product-three__carousel owl-carousel owl-theme thm-owl__carousel"
+                data-owl-options='{
                 "loop": true,
                 "autoplay": false,
                 "margin": 30,
@@ -789,7 +795,8 @@
                                     </div>
                                     <div class="testimonial-two__img-box">
                                         <div class="testimonial-two__img">
-                                            <img src="frontend/assets/images/testimonial/testimonial-2-1.jpg" alt="">
+                                            <img src="frontend/assets/images/testimonial/testimonial-2-1.jpg"
+                                                alt="">
                                         </div>
                                     </div>
                                     <div class="testimonial-two__quote">
@@ -812,7 +819,8 @@
                                     </div>
                                     <div class="testimonial-two__img-box">
                                         <div class="testimonial-two__img">
-                                            <img src="frontend/assets/images/testimonial/testimonial-2-2.jpg" alt="">
+                                            <img src="frontend/assets/images/testimonial/testimonial-2-2.jpg"
+                                                alt="">
                                         </div>
                                     </div>
                                     <div class="testimonial-two__quote">
@@ -835,7 +843,8 @@
                                     </div>
                                     <div class="testimonial-two__img-box">
                                         <div class="testimonial-two__img">
-                                            <img src="frontend/assets/images/testimonial/testimonial-2-3.jpg" alt="">
+                                            <img src="frontend/assets/images/testimonial/testimonial-2-3.jpg"
+                                                alt="">
                                         </div>
                                     </div>
                                     <div class="testimonial-two__quote">
@@ -968,7 +977,8 @@
             <div class="section-title text-center">
                 <span class="section-title__tagline">From the Blog Posts</span>
                 <h2 class="section-title__title">Latest news updates
-                    <br> & articles</h2>
+                    <br> & articles
+                </h2>
             </div>
             <div class="row">
                 <!--News One Single Start-->
