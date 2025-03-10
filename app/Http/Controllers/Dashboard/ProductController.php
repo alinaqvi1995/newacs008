@@ -38,8 +38,10 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0|max:100',
             'visibility' => 'nullable',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            // 'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|max:2048',
+            // 'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'gallery.*' => 'nullable|image|max:2048',
             'tags' => 'nullable|array',
             'tags.*' => 'nullable|string|max:255',
         ]);
