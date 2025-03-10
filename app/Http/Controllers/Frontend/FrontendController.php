@@ -10,7 +10,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $products = Product::get();
+        $products = Product::take(4)->get();
         return view('frontend.pages.index', compact('products'));
     }
     public function wishlist()
