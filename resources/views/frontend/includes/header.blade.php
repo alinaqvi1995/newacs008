@@ -23,7 +23,7 @@
                                             <i class="fas fa-envelope-open"></i>
                                         </div>
                                         <div class="text">
-                                            <p><a href="mailto:needhelp@company.com">needhelp@company.com</a>
+                                            <p><a href="mailto:info@indigoshopify.com">info@indigoshopify.com</a>
                                             </p>
                                         </div>
                                     </li>
