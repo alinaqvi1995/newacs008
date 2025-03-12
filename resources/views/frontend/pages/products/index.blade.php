@@ -151,7 +151,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xl-12">
-                                        <div class="shop-page__pagination">
+                                        {{-- <div class="shop-page__pagination">
                                             <ul class="pg-pagination list-unstyled">
                                                 <li class="count"><a href="#">01</a></li>
                                                 <li class="count"><a href="#">02</a></li>
@@ -161,6 +161,11 @@
                                                     <a href="#" aria-label="Next"><i
                                                             class="fa fa-angle-right"></i></a>
                                                 </li>
+                                            </ul>
+                                        </div> --}}
+                                        <div class="shop-page__pagination">
+                                            <ul class="pg-pagination list-unstyled" id="pagination">
+                                                {!! $products->links() !!}
                                             </ul>
                                         </div>
                                     </div>
