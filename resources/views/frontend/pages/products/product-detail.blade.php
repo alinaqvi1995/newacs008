@@ -60,12 +60,12 @@
                             <h3 class="product-details__quantity-title">Choose quantity</h3>
                             <div class="quantity-box">
                                 <button type="button" class="sub"><i class="fa fa-minus"></i></button>
-                                <input type="number" id="1" value="1" />
+                                <input type="number" class="quantity-input" value="1" min="1"
+                                    max="{{ $product->quantity }}" />
                                 <button type="button" class="add"><i class="fa fa-plus"></i></button>
                             </div>
                         </div>
                     @endif
-
 
                     <div class="product-details__buttons">
                         <div class="product-details__buttons-1">
