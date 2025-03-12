@@ -124,7 +124,7 @@
             </ul>
         </div>
     </div>
-    <div class="dropdown sidebar-user mt-4">
+    {{-- <div class="dropdown sidebar-user mt-4">
         <button type="button" class="btn sidebar-user-button shadow-none w-100" id="page-header-user-dropdown"
             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="d-flex align-items-center overflow-hidden">
@@ -132,13 +132,13 @@
                     src="{{ asset('backend/assets/images/users/32/avatar-1.jpg') }}" alt="Header Avatar">
                 <span class="text-start ms-xl-2 overflow-hidden flex-grow-1 sideba-user-content">
                     <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text text-truncate mb-0"
-                        data-key="t-dixie-allen">Dixie Allen</span>
+                        data-key="t-dixie-allen">Admin</span>
                     <span class="d-none d-xl-block ms-1 fs-sm user-name-sub-text" data-key="t-founder">Founder</span>
                 </span>
             </span>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
-            <h6 class="dropdown-header">Welcome Dixie!</h6>
+            <h6 class="dropdown-header">Welcome Admin!</h6>
             <a class="dropdown-item" href="pages-profile.html"><i
                     class="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span
                     class="align-middle">Profile</span></a>
@@ -172,6 +172,6 @@
                 <span class="align-middle" data-key="t-logout">Logout</span>
             </a>
         </div>
-    </div>
+    </div> --}}
     <div class="sidebar-background"></div>
 </div>

@@ -88,7 +88,7 @@
                         </div>
                     </div>
     
-                    <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                    {{-- <div class="dropdown topbar-head-dropdown ms-1 header-item">
                         <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle" id="page-header-cart-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                             <i class='bx bx-shopping-bag fs-3xl'></i>
                             <span class="position-absolute topbar-badge cartitem-badge fs-3xs translate-middle badge rounded-pill bg-info">5</span>
@@ -284,7 +284,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
     
                     <div class="ms-1 header-item d-none d-sm-flex">
                         <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle" data-toggle="fullscreen">

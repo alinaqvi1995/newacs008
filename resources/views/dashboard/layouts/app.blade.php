@@ -169,7 +169,7 @@
                                 </div>
                             </div>
 
-                            <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                            {{-- <div class="dropdown topbar-head-dropdown ms-1 header-item">
                                 <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle"
                                     id="page-header-cart-dropdown" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
@@ -429,7 +429,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="ms-1 header-item d-none d-sm-flex">
                                 <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle"
@@ -454,7 +454,7 @@
                                 </div>
                             </div>
 
-                            <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
+                            {{-- <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                                 <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle"
                                     id="page-header-notifications-dropdown" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
@@ -607,6 +607,26 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div> --}}
+
+                            <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                                <span class="ms-2 fs-md fw-semibold">Admin</span>
+                                <button type="button"
+                                    class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle d-flex align-items-center"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user fs-3xl"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end p-0">
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="bx bx-power-off fs-md me-2"></i> Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
                             </div>
 
