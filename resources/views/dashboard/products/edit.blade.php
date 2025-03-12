@@ -13,16 +13,15 @@
                                     <li class="breadcrumb-item">
                                         <a href="javascript: void(0);">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Add Product</li>
+                                    <li class="breadcrumb-item active">Edit Product</li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- end page title -->
-                <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
@@ -40,8 +39,9 @@
                                             <div class="mb-3">
                                                 <label for="productTitle" class="form-label">Product Title
                                                     <span class="text-danger">*</span></label>
-                                                <input type="text" name="name" value="{{ $product->name }}" class="form-control" id="productTitle"
-                                                    placeholder="Enter product title" required />
+                                                <input type="text" name="name" value="{{ $product->name }}"
+                                                    class="form-control" id="productTitle" placeholder="Enter product title"
+                                                    required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="category" class="form-label">Categories
@@ -49,18 +49,17 @@
                                                 <select class="form-control" data-choices name="category" id="category">
                                                     <option value="">Select categories</option>
                                                     @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                        <option value="{{ $category->id }}"
+                                                            @if ($category->id == $product->category_id) selected @endif>
+                                                            {{ $category->name }}</option>
                                                     @endforeach
-                                                    <option value="Other Accessories">
-                                                        Other Accessories
-                                                    </option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="shortDecs" class="form-label">Short Description
                                                     <span class="text-danger">*</span></label>
                                                 <textarea class="form-control" id="shortDecs" name="short_description"
-                                                    placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
+                                                    placeholder="Must enter minimum of a 100 characters" rows="3">{{ $product->short_description }}</textarea>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-6">
@@ -71,7 +70,9 @@
                                                             id="productUnit">
                                                             <option value="">Select Brand</option>
                                                             @foreach ($brands as $brand)
-                                                                <option value="{{ $brand->id }}">{{ $brand->name }}
+                                                                <option value="{{ $brand->id }}"
+                                                                    @if ($brand->id == $product->brand_id) selected @endif>
+                                                                    {{ $brand->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -85,7 +86,9 @@
                                                             id="productUnit">
                                                             <option value="">Select Unit</option>
                                                             @foreach ($units as $unit)
-                                                                <option value="{{ $unit->id }}">{{ $unit->name }}
+                                                                <option value="{{ $unit->id }}"
+                                                                    @if ($unit->id == $product->unit_id) selected @endif>
+                                                                    {{ $unit->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -95,33 +98,39 @@
                                             <div class="mb-3">
                                                 <div id="hash_tags" class="mb-3">
                                                     <label for="tags">Tags</label><br>
-                                                    <input type="" name="tags[]" value="">
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            <input type="text" id="tagInput" class="form-control"
-                                                                placeholder="Add a new tag...">
+                                                            <input type="text" id="tagInput" class="form-control" placeholder="Add a new tag...">
                                                         </div>
                                                         <div class="col-4">
-                                                            <button type="button" id="addTagBtn"
-                                                                class="btn btn-primary mt-2">Add
-                                                                Tag</button>
+                                                            <button type="button" id="addTagBtn" class="btn btn-primary mt-2">Add Tag</button>
                                                         </div>
+                                                    </div>
+                                                    <div id="tagList">
+                                                        @foreach($product->tags as $tag)
+                                                            <span class="badge badge-primary tag badge-lg me-2" data-id="tag_{{ $tag->id }}" 
+                                                                style="color: red; font-size: 1.25em; cursor: pointer;">
+                                                                #{{ $tag->name }} 
+                                                                <span class="remove-tag" style="cursor: pointer; color: white; margin-left: 5px;">×</span>
+                                                            </span>
+                                                            <input type="hidden" name="tags[]" value="{{ $tag->name }}">
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="form-check form-switch mb-3">
-                                                        <input class="form-check-input" name="exchangeable" type="checkbox"
-                                                            role="switch" id="exchangeableInput" />
+                                                        <input class="form-check-input" name="exchangeable" value="1"
+                                                            type="checkbox" role="switch" id="exchangeableInput" />
                                                         <label class="form-check-label"
                                                             for="exchangeableInput">Exchangeable</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-check form-switch mb-3">
-                                                        <input class="form-check-input" name="refundable" type="checkbox"
-                                                            role="switch" id="refundableInput" />
+                                                        <input class="form-check-input" name="refundable" value="1"
+                                                            type="checkbox" role="switch" id="refundableInput" />
                                                         <label class="form-check-label"
                                                             for="refundableInput">Refundable</label>
                                                     </div>
@@ -156,7 +165,8 @@
                                             <div>
                                                 <label class="form-label">Product Description
                                                     <span class="text-danger">*</span></label>
-                                                <textarea class="form-control" id="description" name="description" placeholder="Description" rows="5"></textarea>
+                                                <textarea class="form-control" id="description" name="description" placeholder="Description" rows="5">{{ $product->description }}</textarea>
+                                                {{-- <div class="ckeditor-classic"></div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -320,7 +330,7 @@
                                                     <div>
                                                         <label for="productStocks" class="form-label">Stocks (Quantity)
                                                             <span class="text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="quantity"
+                                                        <input type="number" class="form-control" name="quantity" value="{{ $product->quantity }}"
                                                             id="productStocks" placeholder="Stocks" required />
                                                     </div>
                                                 </div>
@@ -331,8 +341,7 @@
                                                         <div class="input-group has-validation">
                                                             <span class="input-group-text"
                                                                 id="product-price-addon">$</span>
-                                                            <input type="number" name="price" class="form-control"
-                                                                id="product-price-input" placeholder="Enter price"
+                                                            <input type="number" name="price" class="form-control" value="{{ $product->price }}" id="product-price-input" placeholder="Enter price"
                                                                 aria-label="Price" aria-describedby="product-price-addon"
                                                                 required="" />
                                                             <div class="invalid-feedback">
@@ -349,7 +358,7 @@
                                                         <div class="input-group">
                                                             <span class="input-group-text"
                                                                 id="product-discount-addon">%</span>
-                                                            <input type="text" name="discount" class="form-control"
+                                                            <input type="number" name="discount" value="{{ $product->discount }}" class="form-control"
                                                                 id="product-discount-input" placeholder="Enter discount"
                                                                 aria-label="discount"
                                                                 aria-describedby="product-discount-addon" />
@@ -364,8 +373,8 @@
                                                         <select class="form-select" name="visibility"
                                                             id="choices-publish-visibility-input" data-choices
                                                             data-choices-search-false>
-                                                            <option value="1" selected>Public</option>
-                                                            <option value="0">Hidden</option>
+                                                            <option value="1" @if ($product->visibility == 1) selected @endif>Public</option>
+                                                            <option value="0" @if ($product->visibility == 0) selected @endif>Hidden</option>
                                                         </select>
                                                     </div>
                                                 </div>
