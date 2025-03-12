@@ -69,7 +69,7 @@
                             <ul class="list-unstyled">
                                 <li class="{{ request('category') ? '' : 'active' }}">
                                     <a href="javascript:void(0);" data-category="">All Categories
-                                        <span>({{ count($TotalProducts) }})</span>
+                                        <span>({{ count($totalProducts) }})</span>
                                     </a>
                                 </li>
                                 @foreach ($categories as $category)
