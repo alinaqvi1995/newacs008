@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Cart;
 
 class FrontendController extends Controller
 {
@@ -71,5 +72,11 @@ class FrontendController extends Controller
     {
         $product = Product::where('slug', $slug)->first();
         return view('frontend.pages.products.product-detail',compact( 'product'));
+    }
+    
+    public function my_cart()
+    {
+        $cartItems = Cart::where('user_id', auth()->id())->with('product')->get();
+        return view('frontend.pages.cart', compact('cartItems'));
     }
 }
