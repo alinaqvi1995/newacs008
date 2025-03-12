@@ -68,7 +68,7 @@ class ProductController extends Controller
         $product = Product::create([
             'user_id' => auth()->id(), // Assuming user is logged in
             'name' => $request->name,
-            'slug' => $request->slug,
+            'slug' => $slug,
             'category_id' => $request->category,
             'brand_id' => $request->brand,
             'unit_id' => $request->unit,
