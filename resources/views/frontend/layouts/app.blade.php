@@ -126,27 +126,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            // $(".quantity-box").each(function() {
-            //     let $quantityInput = $(this).find(".quantity-input");
-
-            //     $(this).find(".add").click(function() {
-            //         let currentVal = parseInt($quantityInput.val());
-            //         let maxVal = parseInt($quantityInput.attr("max"));
-
-            //         if (currentVal < maxVal) {
-            //             $quantityInput.val(currentVal + 1);
-            //         }
-            //     });
-
-            //     $(this).find(".sub").click(function() {
-            //         let currentVal = parseInt($quantityInput.val());
-
-            //         if (currentVal > 1) {
-            //             $quantityInput.val(currentVal - 1);
-            //         }
-            //     });
-            // });
-
             $(".add-to-cart").click(function(e) {
                 e.preventDefault();
 

@@ -47,23 +47,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="shop-category product__sidebar-single">
-                            <h3 class="product__sidebar-title">Categories</h3>
-                            <ul class="list-unstyled">
-                                <li class="active">
-                                    <a href="javascript:void(0);" data-category="">All Categories
-                                        <span>{{ count($products) }}</span>
-                                    </a>
-                                </li>
-                                @foreach ($categories as $category)
-                                    <li>
-                                        <a href="javascript:void(0);" data-category="{{ $category->id }}">
-                                            {{ $category->name }} <span>({{ $category->products_count }})</span>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div> --}}
                         <div class="shop-category product__sidebar-single">
                             <h3 class="product__sidebar-title">Categories</h3>
                             <ul class="list-unstyled">
@@ -81,77 +64,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                        {{-- <div class="shop-category product__sidebar-single">
-                            <h3 class="product__sidebar-title">Categories</h3>
-                            <ul class="list-unstyled">
-                                @foreach ($categories as $category)
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            {{ $category->name }} <span>({{ $category->products_count }})</span>
-                                        </a>
-                                    </li>
-                                @endforeach
-                                <li class="active"><a href="#">Dairy Milk <span>(8)</span></a></li>
-                            <li><a href="#">Fresh Fruits <span>(10)</span></a></li>
-                            </ul>
-                        </div> --}}
-                        {{-- <div class="shop-best-sellers product__sidebar-single">
-                            <h3 class="product__sidebar-title">Best sellers</h3>
-                            <ul class="list-unstyled shop-best-sellers__list">
-                                <li>
-                                    <div class="shop-best-sellers__img">
-                                        <img src="frontend/assets/images/shop/shop-best-sellers-img-1-1.jpg" alt="">
-                                    </div>
-                                    <div class="shop-best-sellers__content">
-                                        <div class="shop-best-sellers__review">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <h4 class="shop-best-sellers__title"><a
-                                                href="{{ route('frontend.products.detail') }}">Carrot</a></h4>
-                                        <p class="shop-best-sellers__rate">$9.00</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="shop-best-sellers__img">
-                                        <img src="frontend/assets/images/shop/shop-best-sellers-img-1-2.jpg" alt="">
-                                    </div>
-                                    <div class="shop-best-sellers__content">
-                                        <div class="shop-best-sellers__review">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <h4 class="shop-best-sellers__title"><a
-                                                href="{{ route('frontend.products.detail') }}">Green
-                                                grapes</a></h4>
-                                        <p class="shop-best-sellers__rate">$16.00</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="shop-best-sellers__img">
-                                        <img src="frontend/assets/images/shop/shop-best-sellers-img-1-3.jpg" alt="">
-                                    </div>
-                                    <div class="shop-best-sellers__content">
-                                        <div class="shop-best-sellers__review">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <h4 class="shop-best-sellers__title"><a
-                                                href="{{ route('frontend.products.detail') }}">Apples</a></h4>
-                                        <p class="shop-best-sellers__rate">$23.00</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div> --}}
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-9">
@@ -296,7 +208,7 @@
                                 </div><!-- /.product-list__inner -->
                                 <div class="row">
                                     <div class="col-xl-12">
-                                        <div class="shop-page__pagination">
+                                        {{-- <div class="shop-page__pagination">
                                             <ul class="pg-pagination list-unstyled">
                                                 <li class="count"><a href="#">01</a></li>
                                                 <li class="count"><a href="#">02</a></li>
@@ -306,6 +218,11 @@
                                                     <a href="#" aria-label="Next"><i
                                                             class="fa fa-angle-right"></i></a>
                                                 </li>
+                                            </ul>
+                                        </div> --}}
+                                        <div class="shop-page__pagination">
+                                            <ul class="pg-pagination list-unstyled" id="pagination">
+                                                {!! $products->links() !!}
                                             </ul>
                                         </div>
                                     </div>
@@ -382,6 +299,43 @@
 @section('script')
     <script>
         $(document).ready(function() {
+            function fetchFilteredData(page = 1) {
+                let search = $("#search").val();
+                let minPrice = $("#min_price").val();
+                let maxPrice = $("#max_price").val();
+                let category = $(".shop-category ul li a.active").data("category");
+                let sortBy = $("#sort_by").val();
+
+                $.ajax({
+                    url: "{{ route('frontend.products') }}?page=" + page,
+                    method: "GET",
+                    data: {
+                        search: search,
+                        min_price: minPrice,
+                        max_price: maxPrice,
+                        category: category,
+                        sort_by: sortBy
+                    },
+                    success: function(response) {
+                        $("#product__all").html($(response).find("#product__all").html());
+                        $("#pagination").html($(response).find("#pagination").html());
+                    }
+                });
+            }
+
+            $("#search, #min_price, #max_price, #sort_by").on("input change", function() {
+                fetchFilteredData();
+            });
+
+            $(document).on("click", "#pagination a", function(e) {
+                e.preventDefault();
+                let page = $(this).attr("href").split("page=")[1];
+                fetchFilteredData(page);
+            });
+        });
+    </script>
+    {{-- <script>
+        $(document).ready(function() {
             function fetchFilteredData() {
                 let search = $("#search").val();
                 let minPrice = $("#min_price").val();
@@ -415,5 +369,5 @@
                 fetchFilteredData();
             });
         });
-    </script>
+    </script> --}}
 @endsection
