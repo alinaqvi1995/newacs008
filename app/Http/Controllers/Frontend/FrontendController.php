@@ -15,6 +15,10 @@ class FrontendController extends Controller
         $products = Product::take(4)->get();
         return view('frontend.pages.index', compact('products'));
     }
+    public function userAccount()
+    {
+        return view('frontend.pages.user-account.index');
+    }
     public function wishlist()
     {
         return view('frontend.pages.wishlist');

@@ -78,7 +78,7 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="{{ route('index') }}" aria-label="logo image"><img src="assets/images/resources/logo-1.png"
+                <a href="{{ route('index') }}" aria-label="logo image"><img src="frontend/assets/images/resources/logo-1.png"
                         width="104" alt="" /></a>
             </div>
             <!-- /.logo-box -->
@@ -88,11 +88,11 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="mailto:needhelp@packageName__.com">needhelp@ogenix.com</a>
+                    <a href="mailto:info@indigoshopify.com">info@indigoshopify.com</a>
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="tel:666-888-0000">666 888 0000</a>
+                    <a href="tel:+923095320000">+ 92 ( 309 ) 53 - 20000</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">

@@ -581,7 +581,7 @@
             </ul>
         </div>
     </section>
-    <section class="hot-product-three">
+    {{-- <section class="hot-product-three">
         <div class="container">
             <div class="section-title text-center">
                 <span class="section-title__tagline">Checkout Products</span>
@@ -732,7 +732,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="testimonial-two">
         <div class="testimonial-two__bg"
             style="background-image: url(frontend/assets/images/backgrounds/testimonial-two-bg.jpg);"></div>

@@ -31,6 +31,8 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/user-account', [FrontendController::class, 'userAccount'])->name('user.account');
+Route::get('/my-cart', [FrontendController::class, 'my_cart'])->name('my.cart');
 
 Route::get('/products', [FrontendController::class, 'products'])->name('frontend.products');
 Route::get('/products/detail/{slug}', [FrontendController::class, 'productsdetail'])->name('frontend.products.detail');

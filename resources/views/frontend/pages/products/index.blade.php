@@ -204,7 +204,7 @@
                                                             <p class="product__all-price">RS
                                                                 {{ number_format($product->price, 2) }}</p>
                                                             <div class="product__all-btn-box">
-                                                                <a href="cart.html" class="thm-btn product__all-btn">Add
+                                                                <a href="{{ route('my.cart') }}" class="thm-btn product__all-btn">Add
                                                                     to
                                                                     cart</a>
                                                             </div>
@@ -268,7 +268,7 @@
                                                         {{ number_format($product->price, 2) }}</p>
                                                     <p class="product-list__text">{{ $product->short_description }}</p>
                                                     <div class="product-list__btn-box">
-                                                        <a href="cart.html" class="thm-btn product-list__btn">Add to
+                                                        <a href="{{ route('my.cart') }}" class="thm-btn product-list__btn">Add to
                                                             cart</a>
                                                     </div>
                                                 </div>

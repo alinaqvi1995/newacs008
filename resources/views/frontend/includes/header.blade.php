@@ -31,9 +31,9 @@
                             </div>
                             <div class="main-header-three__menu-box">
                                 <ul class="list-unstyled main-header-three__menu">
-                                    <li><a href="contact.html">Support</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
+                                    <li><a href="#">Support</a></li>
+                                    <li><a href="#">Wish List</a></li>
+                                    <li><a href="{{ route('user.account') }}">My Account</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -79,9 +79,9 @@
                                                 <i class="fas fa-user"></i>
                                             </div>
                                             <ul class="list-unstyled main-menu-three__login-menu">
-                                                <li><a href="#">Login</a></li>
+                                                <li><a href="{{ route('user.account') }}">Login</a></li>
                                                 <li><span>/</span></li>
-                                                <li><a href="#">Register</a></li>
+                                                <li><a href="{{ route('user.account') }}">Register</a></li>
                                             </ul>
                                         </div>
                                         <div class="main-menu-three__search-cart-box">

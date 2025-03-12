@@ -7,23 +7,6 @@
             style="background-image: url('{{ asset('backend/assets/images/auth/auth.jpg') }}');background-size: cover;background-position: center;">
             <div class="effect-one"></div>
             <div class="row g-0 align-items-center">
-                <div class="col-xxl-8 order-last order-xl-first">
-                    <div class="card auth-card border-0 shadow-none mb-0 bg-transparent">
-                        <div class="card-body p-4 p-xl-5 d-flex justify-content-between flex-column h-100">
-
-                            <div class="text-center mt-auto">
-                                <p class="mb-0 mt-3 text-white">
-                                    &copy;
-                                    <script>
-                                        document.write(new Date().getFullYear())
-                                    </script> Dosix. Crafted with <i class="mdi mdi-heart text-danger"></i>
-                                    by Themesbrand
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end col-->
                 <div class="col-lg-8 col-xxl-4 mx-auto order-first order-xl-last">
                     <div class="card shadow-lg border-none m-lg-5">
                         <div class="card-body">
@@ -103,9 +86,23 @@
                         </div><!-- end card body -->
                     </div><!-- end card -->
                 </div>
-                <!--end col-->
+                <div class="col-xxl-8 order-last order-xl-first">
+                    <div class="card auth-card border-0 shadow-none mb-0 bg-transparent">
+                        <div class="card-body p-4 p-xl-5 d-flex justify-content-between flex-column h-100">
+
+                            <div class="text-center mt-auto">
+                                <p class="mb-0 mt-3 text-white">
+                                    &copy;
+                                    <script>
+                                        document.write(new Date().getFullYear())
+                                    </script> Dosix. Crafted with <i class="mdi mdi-heart text-danger"></i>
+                                    by Themesbrand
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--end row-->
         </div>
     </section>
 @endsection
