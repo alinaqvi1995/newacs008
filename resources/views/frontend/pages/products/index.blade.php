@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="shop-category product__sidebar-single">
+                        {{-- <div class="shop-category product__sidebar-single">
                             <h3 class="product__sidebar-title">Categories</h3>
                             <ul class="list-unstyled">
                                 <li class="active">
@@ -57,6 +57,23 @@
                                 </li>
                                 @foreach ($categories as $category)
                                     <li>
+                                        <a href="javascript:void(0);" data-category="{{ $category->id }}">
+                                            {{ $category->name }} <span>({{ $category->products_count }})</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div> --}}
+                        <div class="shop-category product__sidebar-single">
+                            <h3 class="product__sidebar-title">Categories</h3>
+                            <ul class="list-unstyled">
+                                <li class="{{ request('category') ? '' : 'active' }}">
+                                    <a href="javascript:void(0);" data-category="">All Categories
+                                        <span>{{ count($products) }}</span>
+                                    </a>
+                                </li>
+                                @foreach ($categories as $category)
+                                    <li class="{{ request('category') == $category->id ? 'active' : '' }}">
                                         <a href="javascript:void(0);" data-category="{{ $category->id }}">
                                             {{ $category->name }} <span>({{ $category->products_count }})</span>
                                         </a>
