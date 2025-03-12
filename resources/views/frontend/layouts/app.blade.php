@@ -170,6 +170,30 @@
                     }
                 });
             });
+
+            $(".add-to-wishlist").click(function() {
+                let productId = $(this).data("id");
+
+                $.ajax({
+                    url: "{{ route('wishlist.add') }}",
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        product_id: productId
+                    },
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 401) {
+                            alert("Login required!");
+                            window.location.href = "{{ route('login') }}";
+                        } else if (xhr.status === 409) {
+                            alert("Already in wishlist!");
+                        }
+                    }
+                });
+            });
         });
     </script>
     @yield('script')

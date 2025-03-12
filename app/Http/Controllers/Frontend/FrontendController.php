@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Cart;
+use App\Models\Wishlist;
 
 class FrontendController extends Controller
 {
@@ -17,7 +18,9 @@ class FrontendController extends Controller
     }
     public function wishlist()
     {
-        return view('frontend.pages.wishlist');
+        $wishlists = Wishlist::where('user_id', auth()->id())->with('product')->get();
+        return view('frontend.pages.wishlist', compact('wishlists'));
+        // return view('frontend.pages.wishlist');
     }
     public function products(Request $request)
     {

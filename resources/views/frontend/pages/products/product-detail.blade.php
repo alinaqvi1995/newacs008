@@ -69,7 +69,10 @@
 
                     <div class="product-details__buttons">
                         <div class="product-details__buttons-1">
-                            <a href="wishlist.html" class="thm-btn">Add to wishlist</a>
+                            {{-- <a href="wishlist.html" class="thm-btn">Add to wishlist</a> --}}
+                            <a href="javascript:void(0);" class="thm-btn add-to-wishlist" data-id="{{ $product->id }}">
+                                Add to wishlist
+                            </a>
                         </div>
 
                         @if ($product->quantity > 0)
