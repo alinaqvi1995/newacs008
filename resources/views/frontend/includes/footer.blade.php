@@ -33,8 +33,8 @@
                             <ul class="footer-widget__explore-list list-unstyled">
                                 <li><a href="about.html">About Company</a></li>
                                 <li><a href="services.html">Our Services</a></li>
-                                <li><a href="pricing.html">Become a Seller</a></li>
-                                <li><a href="products.html">New Products</a></li>
+                                {{-- <li><a href="pricing.html">Become a Seller</a></li> --}}
+                                <li><a href="{{ route('frontend.products') }}">New Products</a></li>
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>

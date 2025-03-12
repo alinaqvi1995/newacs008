@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\UnitController;
 use App\Http\Controllers\Dashboard\TagController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,8 @@ Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->n
 // wishlist
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 Route::delete('/wishlist/remove/{id}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
+
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe.store');
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
