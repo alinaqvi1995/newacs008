@@ -14,7 +14,8 @@ class FrontendController extends Controller
     public function index()
     {
         $products = Product::take(4)->get();
-        return view('frontend.pages.index', compact('products'));
+        $categories = Category::where('status', 1)->get();
+        return view('frontend.pages.index', compact('products', 'categories'));
     }
     public function wishlist()
     {

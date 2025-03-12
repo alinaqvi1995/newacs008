@@ -16,10 +16,13 @@
                         <div class="main-slider-three__categories">
                             <h3 class="main-slider-three__categories-title">All Categories</h3>
                             <ul class="main-slider-three__categories-list list-unstyled">
-                                <li><a href="{{ route('frontend.products') }}"><i class="icon-groceries"></i> Grocery &
-                                        Forzen<span class="fas fa-angle-right"></span></a>
-                                </li>
-                                <li class="active"><a href="{{ route('frontend.products') }}"><i class="icon-fruit"></i>
+                                @foreach ($categories as $item)
+                                    <li><a href="{{ route('frontend.products', ['category' => $item->id]) }}"><i
+                                                class="icon-groceries"></i>
+                                            {{ $item->name }}<span class="fas fa-angle-right"></span></a>
+                                    </li>
+                                @endforeach
+                                {{-- <li class="active"><a href="{{ route('frontend.products') }}"><i class="icon-fruit"></i>
                                         Fresh
                                         Fruits<span class="fas fa-angle-right"></span></a>
                                 </li>
@@ -43,7 +46,7 @@
                                 </li>
                                 <li><a href="{{ route('frontend.products') }}"><i class="icon-corn"></i> Organic<span
                                             class="fas fa-angle-right"></span></a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
@@ -213,7 +216,8 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                     </div>
-                                    <h3 class="hot-products__title"><a href="product-details.html">{{ $product->name }}</a></h3>
+                                    <h3 class="hot-products__title"><a
+                                            href="product-details.html">{{ $product->name }}</a></h3>
                                     <p class="hot-products__price">RS {{ number_format($product->price, 2) }}</p>
                                     <div class="hot-products__btn-box">
                                         <a href="cart.html" class="hot-products__btn thm-btn">Add to cart</a>
