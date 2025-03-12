@@ -22,6 +22,7 @@
                 <!-- end page title -->
                 <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
