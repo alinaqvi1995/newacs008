@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <!-- end page title -->
-                <form action="{{ route('products.update') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-lg-12">
