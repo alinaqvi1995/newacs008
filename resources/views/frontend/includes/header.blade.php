@@ -90,7 +90,7 @@
                                                     class="main-menu-three__search search-toggler icon-magnifying-glass"></a>
                                             </div>
                                             <div class="main-menu-three__cart-box">
-                                                <a href="cart.html"
+                                                <a href="{{ route('my.cart') }}"
                                                     class="main-menu-three__cart icon-shopping-cart"></a>
                                             </div>
                                         </div>
