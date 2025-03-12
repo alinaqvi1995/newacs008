@@ -196,8 +196,8 @@
             });
 
             $(document).on('click', '.shop-category ul li a', function() {
-                $('.shop-category ul li').removeClass('active'); // Remove active class from all categories
-                $(this).parent().addClass('active'); // Add active class to the clicked category
+                $('.shop-category ul li').removeClass('active');
+                $(this).parent().addClass('active');
             });
         });
     </script>

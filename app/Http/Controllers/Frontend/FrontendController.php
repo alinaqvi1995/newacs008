@@ -26,12 +26,12 @@ class FrontendController extends Controller
     public function products(Request $request)
     {
         $query = Product::query();
-    
+
         // Apply search filter
         if ($request->filled('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
-    
+
         // Apply price range filter
         if ($request->filled('min_price')) {
             $query->where('price', '>=', $request->min_price);
@@ -39,14 +39,14 @@ class FrontendController extends Controller
         if ($request->filled('max_price')) {
             $query->where('price', '<=', $request->max_price);
         }
-    
+
         // Apply category filter
         if ($request->filled('category')) {
             $query->whereHas('category', function ($q) use ($request) {
                 $q->where('id', $request->category);
             });
         }
-    
+
         // Apply sorting
         if ($request->filled('sort_by')) {
             if ($request->sort_by == 'price_low_high') {
@@ -59,25 +59,28 @@ class FrontendController extends Controller
         } else {
             $query->latest();
         }
-    
+
         $products = $query->get();
         $categories = Category::where('status', 1)->withCount('products')->get();
-    
+        $totalProducts = Product::where('status', 1)
+            ->where('visibility', 1)
+            ->get();
+
         // dd($products->toArray());
-        
+
         if ($request->ajax()) {
-            return view('frontend.partials.product_list', compact('products', 'categories'));
+            return view('frontend.partials.product_list', compact('products'));
         } else {
-            return view('frontend.pages.products.index', compact('products', 'categories'));
+            return view('frontend.pages.products.index', compact('products', 'categories', 'totalProducts'));
         }
     }
-    
+
     public function productsdetail($slug)
     {
         $product = Product::where('slug', $slug)->first();
-        return view('frontend.pages.products.product-detail',compact( 'product'));
+        return view('frontend.pages.products.product-detail', compact('product'));
     }
-    
+
     public function my_cart()
     {
         $cartItems = Cart::where('user_id', auth()->id())->with('product')->get();
