@@ -74,24 +74,39 @@
                                         </ul>
                                     </div>
                                     <div class="main-menu-three__right">
-                                        <div class="main-menu-three__login-box">
-                                            <div class="main-menu-three__login-icon">
-                                                <i class="fas fa-user"></i>
+                                        @auth
+                                            <div class="main-menu-three__login-box">
+                                                <div class="main-menu-three__login-icon">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                                <ul class="list-unstyled main-menu-three__login-menu">
+                                                    <li>
+                                                        <form action="{{ route('logout') }}" method="POST">
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-link p-0">Logout</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <ul class="list-unstyled main-menu-three__login-menu">
-                                                <li><a href="{{ route('user.account') }}">Login</a></li>
-                                                <li><span>/</span></li>
-                                                <li><a href="{{ route('user.account') }}">Register</a></li>
-                                            </ul>
-                                        </div>
+                                        @else
+                                            <div class="main-menu-three__login-box">
+                                                <div class="main-menu-three__login-icon">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                                <ul class="list-unstyled main-menu-three__login-menu">
+                                                    <li><a href="{{ route('user.account') }}">Login</a></li>
+                                                    <li><span>/</span></li>
+                                                    <li><a href="{{ route('user.account') }}">Register</a></li>
+                                                </ul>
+                                            </div>
+                                        @endauth
+                                    
                                         <div class="main-menu-three__search-cart-box">
                                             <div class="main-menu-three__search-box">
-                                                <a href="#"
-                                                    class="main-menu-three__search search-toggler icon-magnifying-glass"></a>
+                                                <a href="#" class="main-menu-three__search search-toggler icon-magnifying-glass"></a>
                                             </div>
                                             <div class="main-menu-three__cart-box">
-                                                <a href="{{ route('my.cart') }}"
-                                                    class="main-menu-three__cart icon-shopping-cart"></a>
+                                                <a href="{{ route('my.cart') }}" class="main-menu-three__cart icon-shopping-cart"></a>
                                             </div>
                                         </div>
                                     </div>
