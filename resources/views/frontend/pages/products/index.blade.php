@@ -107,7 +107,7 @@
                         </div>
 
                         <div class="tab-content" id="productListGridTabContent">
-                            @include('frontend.partials.product-list')
+                            @include('frontend.partials.product_list')
                         </div>
                     </div>
                 </div>
