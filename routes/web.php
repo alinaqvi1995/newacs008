@@ -41,7 +41,7 @@ Route::get('/add-product', [DashboardController::class, 'addProduct'])->name('ad
 
 // cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->middleware('auth')->name('cart.add');
 Route::put('/cart/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
 Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
