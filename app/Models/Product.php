@@ -52,4 +52,9 @@ class Product extends Model
     {
         return $this->hasMany(Tag::class);
     }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

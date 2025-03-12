@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\BrandController;
 use App\Http\Controllers\Dashboard\UnitController;
 use App\Http\Controllers\Dashboard\TagController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,12 @@ Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('frontend
 
 Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');
 Route::get('/add-product', [DashboardController::class, 'addProduct'])->name('addProduct');
+
+// cart
+Route::get('/cart', [CartController::class, 'index']);
+Route::post('/cart/add', [CartController::class, 'addToCart']);
+Route::put('/cart/update/{id}', [CartController::class, 'updateCart']);
+Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart']);
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
