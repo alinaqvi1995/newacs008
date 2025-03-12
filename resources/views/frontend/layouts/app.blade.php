@@ -126,27 +126,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            // $(".quantity-box").each(function() {
-            //     let $quantityInput = $(this).find(".quantity-input");
-
-            //     $(this).find(".add").click(function() {
-            //         let currentVal = parseInt($quantityInput.val());
-            //         let maxVal = parseInt($quantityInput.attr("max"));
-
-            //         if (currentVal < maxVal) {
-            //             $quantityInput.val(currentVal + 1);
-            //         }
-            //     });
-
-            //     $(this).find(".sub").click(function() {
-            //         let currentVal = parseInt($quantityInput.val());
-
-            //         if (currentVal > 1) {
-            //             $quantityInput.val(currentVal - 1);
-            //         }
-            //     });
-            // });
-
             $(".add-to-cart").click(function(e) {
                 e.preventDefault();
 
@@ -169,6 +148,35 @@
                         alert("Error adding to cart. Please try again.");
                     }
                 });
+            });
+
+            $(".add-to-wishlist").click(function() {
+                let productId = $(this).data("id");
+
+                $.ajax({
+                    url: "{{ route('wishlist.add') }}",
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        product_id: productId
+                    },
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 401) {
+                            alert("Login required!");
+                            window.location.href = "{{ route('login') }}";
+                        } else if (xhr.status === 409) {
+                            alert("Already in wishlist!");
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click', '.shop-category ul li a', function() {
+                $('.shop-category ul li').removeClass('active');
+                $(this).parent().addClass('active');
             });
         });
     </script>
