@@ -50,6 +50,11 @@
                         <div class="shop-category product__sidebar-single">
                             <h3 class="product__sidebar-title">Categories</h3>
                             <ul class="list-unstyled">
+                                <li>
+                                    <a href="javascript:void(0);" data-category="">All Categories
+                                        <span>{{ count($products) }}</span>
+                                    </a>
+                                </li>
                                 @foreach ($categories as $category)
                                     <li>
                                         <a href="javascript:void(0);" data-category="{{ $category->id }}">
