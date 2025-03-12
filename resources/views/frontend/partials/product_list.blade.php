@@ -19,7 +19,7 @@ aria-labelledby="product-grid">
                                 <i class="fa fa-star"></i>
                             </div>
                             <h4 class="product__all-title"><a
-                                    href="{{ route('frontend.products.detail') }}">{{ $product->name }}</a>
+                                    href="{{ route('frontend.products.detail', $product->slug) }}">{{ $product->name }}</a>
                             </h4>
                             <p class="product__all-price">RS
                                 {{ number_format($product->price, 2) }}</p>
@@ -82,7 +82,7 @@ aria-labelledby="product-list">
                         <i class="fa fa-star"></i>
                     </div>
                     <h4 class="product-list__title"><a
-                            href="{{ route('frontend.products.detail') }}">{{ $product->name }}</a>
+                            href="{{ route('frontend.products.detail', $product->slug) }}">{{ $product->name }}</a>
                     </h4>
                     <p class="product-list__price">RS
                         {{ number_format($product->price, 2) }}</p>

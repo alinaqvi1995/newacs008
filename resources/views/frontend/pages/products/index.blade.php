@@ -78,7 +78,7 @@
                             <li><a href="#">Fresh Fruits <span>(10)</span></a></li>
                             </ul>
                         </div> --}}
-                        <div class="shop-best-sellers product__sidebar-single">
+                        {{-- <div class="shop-best-sellers product__sidebar-single">
                             <h3 class="product__sidebar-title">Best sellers</h3>
                             <ul class="list-unstyled shop-best-sellers__list">
                                 <li>
@@ -134,7 +134,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-9">
@@ -199,7 +199,7 @@
                                                                 <i class="fa fa-star"></i>
                                                             </div>
                                                             <h4 class="product__all-title"><a
-                                                                    href="{{ route('frontend.products.detail') }}">{{ $product->name }}</a>
+                                                                    href="{{ route('frontend.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                             </h4>
                                                             <p class="product__all-price">RS
                                                                 {{ number_format($product->price, 2) }}</p>
@@ -262,7 +262,7 @@
                                                         <i class="fa fa-star"></i>
                                                     </div>
                                                     <h4 class="product-list__title"><a
-                                                            href="{{ route('frontend.products.detail') }}">{{ $product->name }}</a>
+                                                            href="{{ route('frontend.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                     </h4>
                                                     <p class="product-list__price">RS
                                                         {{ number_format($product->price, 2) }}</p>

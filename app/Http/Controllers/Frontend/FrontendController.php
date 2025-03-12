@@ -67,8 +67,9 @@ class FrontendController extends Controller
         }
     }
     
-    public function productsdetail()
+    public function productsdetail($slug)
     {
-        return view('frontend.pages.products.product-detail');
+        $product = Product::where('slug', $slug)->first();
+        return view('frontend.pages.products.product-detail',compact( 'product'));
     }
 }

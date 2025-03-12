@@ -32,7 +32,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 
 Route::get('/products', [FrontendController::class, 'products'])->name('frontend.products');
-Route::get('/products/detail', [FrontendController::class, 'productsdetail'])->name('frontend.products.detail');
+Route::get('/products/detail/{slug}', [FrontendController::class, 'productsdetail'])->name('frontend.products.detail');
 Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('frontend.wishlist');
 
 Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');

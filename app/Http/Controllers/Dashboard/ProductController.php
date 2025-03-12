@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Unit;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -46,6 +47,12 @@ class ProductController extends Controller
             'tags.*' => 'nullable|string|max:255',
         ]);
 
+        $slug = Str::slug($request->name);
+        $count = Product::where('slug', 'like', "$slug%")->count();
+        if ($count > 0) {
+            $slug .= '-' . ($count + 1);
+        }
+
         // dd($request->toArray());
 
         // Handle product image
@@ -61,6 +68,7 @@ class ProductController extends Controller
         $product = Product::create([
             'user_id' => auth()->id(), // Assuming user is logged in
             'name' => $request->name,
+            'slug' => $request->slug,
             'category_id' => $request->category,
             'brand_id' => $request->brand,
             'unit_id' => $request->unit,
@@ -138,6 +146,15 @@ class ProductController extends Controller
             // 'tags' => 'nullable|array',
             // 'tags.*' => 'nullable|string|max:255',
         ]);
+
+        if ($product->name !== $request->name) {
+            $slug = Str::slug($request->name);
+            $count = Product::where('slug', 'like', "$slug%")->where('id', '!=', $product->id)->count();
+            if ($count > 0) {
+                $slug .= '-' . ($count + 1);
+            }
+            $product->slug = $slug;
+        }
 
         // Handle product image update
         if ($request->hasFile('image')) {
