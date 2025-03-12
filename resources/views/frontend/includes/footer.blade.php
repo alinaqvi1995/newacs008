@@ -1,6 +1,5 @@
 <footer class="site-footer">
-    <div class="site-footer__bg"
-        style="background-image: url(assets/images/backgrounds/site-footer-bg-img.png);"></div>
+    <div class="site-footer__bg" style="background-image: url(assets/images/backgrounds/site-footer-bg-img.png);"></div>
     <div class="site-footer__ripped-paper"
         style="background-image: url(assets/images/shapes/site-footer-ripped-paper.png);"></div>
     <div class="container">
@@ -9,7 +8,8 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                     <div class="footer-widget__column footer-widget__about">
                         <div class="footer-widget__logo">
-                            <a href="{{ route('index') }}"><img src="assets/images/resources/footer-logo.png" alt=""></a>
+                            <a href="{{ route('index') }}"><img src="assets/images/resources/footer-logo.png"
+                                    alt=""></a>
                         </div>
                         <div class="footer-widget__about-text-box">
                             <p class="footer-widget__about-text">We’re Providing Everyday Fresh <br> and
@@ -50,12 +50,12 @@
                         <ul class="list-unstyled footer-widget__contact-list">
                             <li>
                                 <div class="text">
-                                    <p><a href="tel:928800688960">+92 (8800) 68 - 8960</a></p>
+                                    <p><a href="tel:92309532000">+92 (309) 53 - 2000</a></p>
                                 </div>
                             </li>
                             <li>
                                 <div class="text">
-                                    <p><a href="mailto:info@example.com ">info@example.com</a></p>
+                                    <p><a href="mailto: info@indigoshopify.com">info@indigoshopify.com</a></p>
                                 </div>
                             </li>
                         </ul>

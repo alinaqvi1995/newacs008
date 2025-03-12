@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 
 class FrontendController extends Controller
 {
@@ -17,9 +18,16 @@ class FrontendController extends Controller
     {
         return view('frontend.pages.wishlist');
     }
-    public function products()
+    public function products(Request $request)
     {
-        return view('frontend.pages.products.index');
+        $products = Product::get();
+        $categories = Category::where('status', 1)->withCount('products')->get();
+
+        if ($request->ajax()) {
+            return view('frontend.partials.product_list', compact('products', 'categories'));
+        } else {
+            return view('frontend.pages.products.index', compact('products', 'categories'));
+        }
     }
     public function productsdetail()
     {
