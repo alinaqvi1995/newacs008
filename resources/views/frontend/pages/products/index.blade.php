@@ -50,7 +50,7 @@
                         <div class="shop-category product__sidebar-single">
                             <h3 class="product__sidebar-title">Categories</h3>
                             <ul class="list-unstyled">
-                                <li>
+                                <li class="active">
                                     <a href="javascript:void(0);" data-category="">All Categories
                                         <span>{{ count($products) }}</span>
                                     </a>
