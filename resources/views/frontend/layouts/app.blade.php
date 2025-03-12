@@ -188,40 +188,36 @@
                 $(this).parent().addClass('active');
             });
 
-            $(document).ready(function() {
-                $(".subscribe-one__form").submit(function(e) {
-                    e.preventDefault();
+            $(".subscribe-one__form").submit(function(e) {
+                e.preventDefault();
 
-                    let form = $(this);
-                    let email = form.find("input[name='email']").val();
-                    let responseBox = $(".mc-form__response");
+                let form = $(this);
+                let email = $("#subscriberEmail").val();
+                let responseBox = form.closest(".subscribe-one__form-box").find(".mc-form__response");
 
-                    responseBox.html(""); // Clear previous messages
+                responseBox.html(""); // Clear previous messages
 
-                    $.ajax({
-                        url: "{{ route('subscribe.store') }}",
-                        method: "POST",
-                        data: {
-                            email: email,
-                            _token: "{{ csrf_token() }}"
-                        },
-                        beforeSend: function() {
-                            responseBox.html(
-                                '<span style="color: blue;">Processing...</span>');
-                        },
-                        success: function(response) {
-                            responseBox.html('<span style="color: green;">' + response
-                                .message + '</span>');
-                            form[0].reset();
-                        },
-                        error: function(xhr) {
-                            let errors = xhr.responseJSON.errors;
-                            let errorMessage = errors ? errors.email[0] :
-                                "Something went wrong!";
-                            responseBox.html('<span style="color: red;">' +
-                                errorMessage + '</span>');
-                        }
-                    });
+                $.ajax({
+                    url: "{{ route('subscribe.store') }}",
+                    method: "POST",
+                    data: {
+                        email: email,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    beforeSend: function() {
+                        responseBox.html('<span style="color: blue;">Processing...</span>');
+                    },
+                    success: function(response) {
+                        responseBox.html('<span style="color: green;">' + response.message +
+                            '</span>');
+                        form.trigger("reset"); // Reset form
+                    },
+                    error: function(xhr) {
+                        let errors = xhr.responseJSON?.errors;
+                        let errorMessage = errors ? errors.email[0] : "Something went wrong!";
+                        responseBox.html('<span style="color: red;">' + errorMessage +
+                            '</span>');
+                    }
                 });
             });
         });

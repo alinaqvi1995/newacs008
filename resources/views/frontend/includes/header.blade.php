@@ -48,18 +48,15 @@
                                             <li>
                                                 <a href="/">Home</a>
                                             </li>
+                                            @php
+                                                $categories = \App\Models\Category::where('status', 1)->get();
+                                            @endphp
                                             <li class="dropdown">
                                                 <a href="{{ route('frontend.products') }}">All Categories</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="{{ route('frontend.products') }}"> Grocery & Forzen</a></li>
-                                                    <li><a href="{{ route('frontend.products') }}"> Fresh Fruits</a></li>
-                                                    <li><a href="{{ route('frontend.products') }}"> Salads</a></li>
-                                                    <li><a href="{{ route('frontend.products') }}"> Fresh Meat</a></li>
-                                                    <li><a href="{{ route('frontend.products') }}"> Butter & Egg</a></li>
-                                                    <li><a href="{{ route('frontend.products') }}"> Milk Cream</a></li>
-                                                    <li><a href="{{ route('frontend.products') }}">Oil & Vinegers</a></li>
-                                                    <li><a href="{{ route('frontend.products') }}"> Bread & Bakery</a></li>
-                                                    <li><a href="{{ route('frontend.products') }}"> Organic</a></li>
+                                                    @foreach ($categories as $item)
+                                                    <li><a href="{{ route('frontend.products', ['category' => $item->id]) }}"> {{ $item->name }}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </li>
                                             <li>

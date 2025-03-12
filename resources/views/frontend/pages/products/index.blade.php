@@ -156,7 +156,7 @@
                                 <div class="subscribe-one__form-box">
                                     <form class="subscribe-one__form mc-form" data-url="MC_FORM_URL">
                                         <div class="subscribe-one__input-box">
-                                            <input type="email" placeholder="Email Address" name="email">
+                                            <input type="email" placeholder="Email Address" id="subscriberEmail" name="email">
                                             <button type="submit" class="subscribe-one__btn"><i
                                                     class="fas fa-paper-plane"></i></button>
                                         </div>
