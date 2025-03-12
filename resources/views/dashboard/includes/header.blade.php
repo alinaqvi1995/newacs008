@@ -76,8 +76,8 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('categories.index') }}" class="nav-link menu-link"> <i class="bx bx-category"></i> <span
-                            data-key="t-calendar">Categories</span> </a>
+                    <a href="{{ route('categories.index') }}" class="nav-link menu-link"> <i class="bx bx-category"></i>
+                        <span data-key="t-calendar">Categories</span> </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('units.index') }}" class="nav-link menu-link"> <i class="bx bx-grid"></i> <span
@@ -128,8 +128,8 @@
         <button type="button" class="btn sidebar-user-button shadow-none w-100" id="page-header-user-dropdown"
             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="d-flex align-items-center overflow-hidden">
-                <img class="rounded-circle header-profile-user" src="{{ asset('backend/assets/images/users/32/avatar-1.jpg') }}"
-                    alt="Header Avatar">
+                <img class="rounded-circle header-profile-user"
+                    src="{{ asset('backend/assets/images/users/32/avatar-1.jpg') }}" alt="Header Avatar">
                 <span class="text-start ms-xl-2 overflow-hidden flex-grow-1 sideba-user-content">
                     <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text text-truncate mb-0"
                         data-key="t-dixie-allen">Dixie Allen</span>
@@ -162,9 +162,15 @@
             <a class="dropdown-item" href="auth-lockscreen.html"><i
                     class="mdi mdi-lock text-muted fs-lg align-middle me-1"></i> <span class="align-middle">Lock
                     screen</span></a>
-            <a class="dropdown-item" href="auth-logout.html"><i
-                    class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i> <span class="align-middle"
-                    data-key="t-logout">Logout</span></a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+
+            <a class="dropdown-item" href="#"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="mdi mdi-logout text-muted fs-lg align-middle me-1"></i>
+                <span class="align-middle" data-key="t-logout">Logout</span>
+            </a>
         </div>
     </div>
     <div class="sidebar-background"></div>

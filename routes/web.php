@@ -52,7 +52,7 @@ Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->n
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 Route::delete('/wishlist/remove/{id}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
 
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

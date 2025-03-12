@@ -78,8 +78,8 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="{{ route('index') }}" aria-label="logo image"><img src="frontend/assets/images/resources/logo-1.png"
-                        width="104" alt="" /></a>
+                <a href="{{ route('index') }}" aria-label="logo image"><img
+                        src="frontend/assets/images/resources/logo-1.png" width="104" alt="" /></a>
             </div>
             <!-- /.logo-box -->
             <div class="mobile-nav__container"></div>
@@ -125,12 +125,19 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $(".add-to-cart").click(function(e) {
+            $(document).on("click", ".add-to-cart", function(e) {
                 e.preventDefault();
 
+                var isAuthenticated = $(this).data('auth');
                 let productId = $(this).data("id");
-                let quantity = $(this).closest(".product-details__buttons").prev(
-                    ".product-details__quantity").find(".quantity-input").val();
+                let quantity = $(this).closest(".product-details__buttons")
+                    .prev(".product-details__quantity")
+                    .find(".quantity-input").val();
+
+                if (isAuthenticated == 0) {
+                    window.location.href = "{{ route('user.account') }}";
+                    return false;
+                }
 
                 $.ajax({
                     url: "{{ route('cart.add') }}",
@@ -149,8 +156,16 @@
                 });
             });
 
-            $(".add-to-wishlist").click(function() {
+            $(document).on("click", ".add-to-wishlist", function(e) {
+                e.preventDefault();
+
+                var isAuthenticated = $(this).data('auth');
                 let productId = $(this).data("id");
+
+                if (isAuthenticated == 0) {
+                    window.location.href = "{{ route('user.account') }}";
+                    return false;
+                }
 
                 $.ajax({
                     url: "{{ route('wishlist.add') }}",
@@ -163,12 +178,7 @@
                         alert(response.message);
                     },
                     error: function(xhr) {
-                        if (xhr.status === 401) {
-                            alert("Login required!");
-                            window.location.href = "{{ route('login') }}";
-                        } else if (xhr.status === 409) {
-                            alert("Already in wishlist!");
-                        }
+                        alert("Error.");
                     }
                 });
             });

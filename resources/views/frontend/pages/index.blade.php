@@ -220,7 +220,10 @@
                                             href="product-details.html">{{ $product->name }}</a></h3>
                                     <p class="hot-products__price">RS {{ number_format($product->price, 2) }}</p>
                                     <div class="hot-products__btn-box">
-                                        <a href="cart.html" class="hot-products__btn thm-btn">Add to cart</a>
+                                        <a href="javascript:void(0);" class="hot-products__btn thm-btn add-to-cart"
+                                            data-id="{{ $product->id }}"
+                                            data-auth="{{ auth()->check() ? '1' : '0' }}">Add
+                                            to cart</a>
                                     </div>
                                 </div>
                                 <div class="hot-products__icon-boxes">
@@ -232,99 +235,6 @@
                     </div>
                 @endforeach
                 <!-- Hot Products Two Single End -->
-                {{-- <!-- Hot Products Two Single Start -->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                    <div class="hot-products__single">
-                        <div class="hot-products__single-inner">
-                            <div class="hot-products__img-box">
-                                <div class="hot-products__img">
-                                    <img src="frontend/assets/images/resources/hot-product-1-2.webp" alt="">
-                                </div>
-                            </div>
-                            <div class="hot-products__content">
-                                <div class="hot-products__rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h3 class="hot-products__title"><a href="product-details.html">Potatos</a></h3>
-                                <p class="hot-products__price">RS 22.00</p>
-                                <div class="hot-products__btn-box">
-                                    <a href="cart.html" class="hot-products__btn thm-btn">Add to cart</a>
-                                </div>
-                            </div>
-                            <div class="hot-products__icon-boxes">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="fas fa-eye"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Hot Products Two Single End -->
-                <!-- Hot Products Two Single Start -->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="hot-products__single">
-                        <div class="hot-products__single-inner">
-                            <div class="hot-products__img-box">
-                                <div class="hot-products__img">
-                                    <img src="frontend/assets/images/resources/hot-product-1-3.webp" alt="">
-                                </div>
-                            </div>
-                            <div class="hot-products__content">
-                                <div class="hot-products__rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h3 class="hot-products__title"><a href="product-details.html">Apples</a></h3>
-                                <p class="hot-products__price">RS 16.00</p>
-                                <div class="hot-products__btn-box">
-                                    <a href="cart.html" class="hot-products__btn thm-btn">Add to cart</a>
-                                </div>
-                            </div>
-                            <div class="hot-products__icon-boxes">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="fas fa-eye"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Hot Products Two Single End -->
-                <!-- Hot Products Two Single Start -->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="hot-products__single">
-                        <div class="hot-products__single-inner">
-                            <div class="hot-products__img-box">
-                                <div class="hot-products__img">
-                                    <img src="frontend/assets/images/resources/hot-product-1-4.webp" alt="">
-                                </div>
-                            </div>
-                            <div class="hot-products__content">
-                                <div class="hot-products__rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h3 class="hot-products__title"><a href="product-details.html">Lettus</a></h3>
-                                <p class="hot-products__price">RS 9.00</p>
-                                <div class="hot-products__btn-box">
-                                    <a href="cart.html" class="hot-products__btn thm-btn">Add to cart</a>
-                                </div>
-                            </div>
-                            <div class="hot-products__icon-boxes">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="fas fa-eye"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Hot Products Two Single End --> --}}
             </div>
         </div>
     </section>

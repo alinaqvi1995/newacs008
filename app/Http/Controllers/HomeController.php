@@ -24,8 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
+        if (Auth::check() && Auth::user()->role == 'admin') {
             return redirect()->route('dashboard');
+        }
+        if (Auth::check() && Auth::user()->role == 'customer') {
+            return back();
         } else {
             return redirect()->route('index');
             // return redirect('index');

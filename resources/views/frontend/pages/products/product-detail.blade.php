@@ -69,17 +69,17 @@
 
                     <div class="product-details__buttons">
                         <div class="product-details__buttons-1">
-                            {{-- <a href="wishlist.html" class="thm-btn">Add to wishlist</a> --}}
-                            <a href="javascript:void(0);" class="thm-btn add-to-wishlist" data-id="{{ $product->id }}">
+                            <a href="javascript:void(0);" class="thm-btn add-to-wishlist"
+                                data-id="{{ $product->id }}" data-auth="{{ auth()->check() ? '1' : '0' }}">
                                 Add to wishlist
                             </a>
                         </div>
 
                         @if ($product->quantity > 0)
                             <div class="product-details__buttons-2">
-                                <a href="javascript:void(0);" class="thm-btn add-to-cart" data-id="{{ $product->id }}">Add
+                                <a href="javascript:void(0);" class="thm-btn add-to-cart"
+                                    data-id="{{ $product->id }}" data-auth="{{ auth()->check() ? '1' : '0' }}">Add
                                     to cart</a>
-                                {{-- <a href="cart.html" class="thm-btn">Add to cart</a> --}}
                             </div>
                         @endif
                     </div>
