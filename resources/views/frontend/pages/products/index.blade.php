@@ -327,6 +327,12 @@
                 fetchFilteredData();
             });
 
+            $(".shop-category ul li a").on("click", function() {
+                $(".shop-category ul li a").removeClass("active");
+                $(this).addClass("active");
+                fetchFilteredData();
+            });
+
             $(document).on("click", "#pagination a", function(e) {
                 e.preventDefault();
                 let page = $(this).attr("href").split("page=")[1];
