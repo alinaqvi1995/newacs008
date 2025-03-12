@@ -87,10 +87,10 @@
                     <a href="{{ route('brands.index') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
                             data-key="t-calendar">Brands</span> </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('tags.index') }}" class="nav-link menu-link"> <i class="bx bx-tag"></i> <span
                             data-key="t-calendar">Tags</span> </a>
-                </li>
+                </li> --}}
                 {{-- <li class="nav-item">
                     <a href="apps-chat.html" class="nav-link menu-link"> <i class="bx bx-chat"></i> <span
                             data-key="t-chat">Chat</span> </a>
