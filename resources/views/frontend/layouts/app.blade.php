@@ -69,7 +69,7 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="assets/images/resources/logo-1.png" width="104"
+                <a href="{{ route('index') }}" aria-label="logo image"><img src="assets/images/resources/logo-1.png" width="104"
                         alt="" /></a>
             </div>
             <!-- /.logo-box -->
