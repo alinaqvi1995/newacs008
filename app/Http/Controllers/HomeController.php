@@ -25,9 +25,10 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return redirect('dashboard');
+            return redirect()->route('dashboard');
         } else {
-            return redirect('index');
+            return redirect()->route('index');
+            // return redirect('index');
         }
     }
 }
