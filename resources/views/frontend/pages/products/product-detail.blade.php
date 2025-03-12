@@ -73,9 +73,11 @@
                         </div>
 
                         @if ($product->quantity > 0)
-                        <div class="product-details__buttons-2">
-                            <a href="cart.html" class="thm-btn">Add to cart</a>
-                        </div>
+                            <div class="product-details__buttons-2">
+                                <a href="javascript:void(0);" class="thm-btn add-to-cart" data-id="{{ $product->id }}">Add
+                                    to cart</a>
+                                {{-- <a href="cart.html" class="thm-btn">Add to cart</a> --}}
+                            </div>
                         @endif
                     </div>
                     <div class="product-details__social">

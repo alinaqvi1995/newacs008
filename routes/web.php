@@ -40,10 +40,10 @@ Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');
 Route::get('/add-product', [DashboardController::class, 'addProduct'])->name('addProduct');
 
 // cart
-Route::get('/cart', [CartController::class, 'index']);
-Route::post('/cart/add', [CartController::class, 'addToCart']);
-Route::put('/cart/update/{id}', [CartController::class, 'updateCart']);
-Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart']);
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::put('/cart/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
+Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
