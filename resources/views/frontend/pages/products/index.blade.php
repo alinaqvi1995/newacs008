@@ -28,7 +28,7 @@
                     <div class="product__sidebar">
                         <div class="shop-search product__sidebar-single">
                             <form action="#">
-                                <input type="text" placeholder="Search">
+                                <input type="text" id="search" placeholder="Search">
                             </form>
                         </div>
                         <div class="product__price-ranger product__sidebar-single">
@@ -37,9 +37,9 @@
                                 <div id="slider-range"></div>
                                 <div class="ranger-min-max-block">
                                     <div class="ranger-min-max-block-box">
-                                        <input type="text" readonly class="min">
+                                        <input type="text" id="min_price" readonly class="min">
                                         <span>-</span>
-                                        <input type="text" readonly class="max">
+                                        <input type="text" id="max_price readonly class="max">
                                     </div>
                                     <div class="product__price-ranger-filter">
                                         <input type="submit" value="Filter">
@@ -52,20 +52,27 @@
                             <ul class="list-unstyled">
                                 @foreach ($categories as $category)
                                     <li>
+                                        <a href="javascript:void(0);" data-category="{{ $category->id }}">
+                                            {{ $category->name }} <span>({{ $category->products_count }})</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        {{-- <div class="shop-category product__sidebar-single">
+                            <h3 class="product__sidebar-title">Categories</h3>
+                            <ul class="list-unstyled">
+                                @foreach ($categories as $category)
+                                    <li>
                                         <a href="javascript:void(0);">
                                             {{ $category->name }} <span>({{ $category->products_count }})</span>
                                         </a>
                                     </li>
-                                    {{-- <li><a href="javascript:void(0);">{{ $category->name }} <span>(9)</span></a></li> --}}
                                 @endforeach
-                                {{-- <li class="active"><a href="#">Dairy Milk <span>(8)</span></a></li>
-                            <li><a href="#">Fresh Meat <span>(10)</span></a></li>
-                            <li><a href="#">Tea & Coffee <span>(16)</span></a></li>
-                            <li><a href="#">Organic Food <span>(4)</span></a></li>
-                            <li><a href="#">Fresh Vegetables <span>(3)</span></a></li>
-                            <li><a href="#">Fresh Fruits <span>(10)</span></a></li> --}}
+                                <li class="active"><a href="#">Dairy Milk <span>(8)</span></a></li>
+                            <li><a href="#">Fresh Fruits <span>(10)</span></a></li>
                             </ul>
-                        </div>
+                        </div> --}}
                         <div class="shop-best-sellers product__sidebar-single">
                             <h3 class="product__sidebar-title">Best sellers</h3>
                             <ul class="list-unstyled shop-best-sellers__list">
@@ -153,11 +160,10 @@
 
                                         <div class="product__showing-sort">
                                             <div class="select-box">
-                                                <select class="wide">
-                                                    <option data-display="Sort by popular">Sort by popular</option>
-                                                    <option value="1">Sort by popular</option>
-                                                    <option value="2">Sort by Price</option>
-                                                    <option value="3">Sort by Ratings</option>
+                                                <select class="wide" id="sort_by">
+                                                    <option value="latest">Latest</option>
+                                                    <option value="price_low_high">Price: Low to High</option>
+                                                    <option value="price_high_low">Price: High to Low</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -169,7 +175,7 @@
                         <div class="tab-content" id="productListGridTabContent">
                             <div class="tab-pane fade show active" id="product-grid" role="tabpanel"
                                 aria-labelledby="product-grid">
-                                <div class="product__all">
+                                <div class="product__all" id="product__all">
                                     <div class="row">
                                         <!--Product All Single Start-->
                                         @foreach ($products as $product)
@@ -230,234 +236,40 @@
                                 aria-labelledby="product-list">
                                 <div class="product-list__inner">
                                     <!--Products List Single Start-->
-                                    <div class="product-list__single">
-                                        <div class="product-list__single-inner">
-                                            <div class="product-list__img-box">
-                                                <div class="product-list__img">
-                                                    <img src="frontend/assets/images/shop/product-list-1-1.jpg"
-                                                        alt="">
+                                    @foreach ($products as $product)
+                                        <div class="product-list__single">
+                                            <div class="product-list__single-inner">
+                                                <div class="product-list__img-box">
+                                                    <div class="product-list__img">
+                                                        <img src="{{ asset($product->image) }}" alt="">
+                                                    </div>
+                                                    <div class="product-list__icon-boxes">
+                                                        <a href="#"><i class="far fa-heart"></i></a>
+                                                        <a href="#"><i class="fas fa-eye"></i></a>
+                                                    </div>
                                                 </div>
-                                                <div class="product-list__icon-boxes">
-                                                    <a href="#"><i class="far fa-heart"></i></a>
-                                                    <a href="#"><i class="fas fa-eye"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-list__content">
-                                                <div class="product-list__review">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <h4 class="product-list__title"><a
-                                                        href="{{ route('frontend.products.detail') }}">Bananas</a>
-                                                </h4>
-                                                <p class="product-list__price">$18.00</p>
-                                                <p class="product-list__text">Mauris non dignissim purus, ac commodo
-                                                    diam.
-                                                    Donec sit amet lacinia nulla. Aliquam quis purus in justo
-                                                    pulvinar
-                                                    tempor. Aliquam tellus nulla, sollicitudin at euismod.</p>
-                                                <div class="product-list__btn-box">
-                                                    <a href="cart.html" class="thm-btn product-list__btn">Add to
-                                                        cart</a>
+                                                <div class="product-list__content">
+                                                    <div class="product-list__review">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <h4 class="product-list__title"><a
+                                                            href="{{ route('frontend.products.detail') }}">{{ $product->name }}</a>
+                                                    </h4>
+                                                    <p class="product-list__price">RS
+                                                        {{ number_format($product->price, 2) }}</p>
+                                                    <p class="product-list__text">{{ $product->short_description }}</p>
+                                                    <div class="product-list__btn-box">
+                                                        <a href="cart.html" class="thm-btn product-list__btn">Add to
+                                                            cart</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!--Products List Single End-->
-                                    <!--Products List Single Start-->
-                                    <div class="product-list__single">
-                                        <div class="product-list__single-inner">
-                                            <div class="product-list__img-box">
-                                                <div class="product-list__img">
-                                                    <img src="frontend/assets/images/shop/product-list-1-2.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="product-list__icon-boxes">
-                                                    <a href="#"><i class="far fa-heart"></i></a>
-                                                    <a href="#"><i class="fas fa-eye"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-list__content">
-                                                <div class="product-list__review">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <h4 class="product-list__title"><a
-                                                        href="{{ route('frontend.products.detail') }}">Potatos</a>
-                                                </h4>
-                                                <p class="product-list__price">$22.00</p>
-                                                <p class="product-list__text">Mauris non dignissim purus, ac commodo
-                                                    diam.
-                                                    Donec sit amet lacinia nulla. Aliquam quis purus in justo
-                                                    pulvinar
-                                                    tempor. Aliquam tellus nulla, sollicitudin at euismod.</p>
-                                                <div class="product-list__btn-box">
-                                                    <a href="cart.html" class="thm-btn product-list__btn">Add to
-                                                        cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--Products List Single End-->
-                                    <!--Products List Single Start-->
-                                    <div class="product-list__single">
-                                        <div class="product-list__single-inner">
-                                            <div class="product-list__img-box">
-                                                <div class="product-list__img">
-                                                    <img src="frontend/assets/images/shop/product-list-1-3.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="product-list__icon-boxes">
-                                                    <a href="#"><i class="far fa-heart"></i></a>
-                                                    <a href="#"><i class="fas fa-eye"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-list__content">
-                                                <div class="product-list__review">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <h4 class="product-list__title"><a
-                                                        href="{{ route('frontend.products.detail') }}">Brown
-                                                        bread</a>
-                                                </h4>
-                                                <p class="product-list__price">$23.00</p>
-                                                <p class="product-list__text">Mauris non dignissim purus, ac commodo
-                                                    diam.
-                                                    Donec sit amet lacinia nulla. Aliquam quis purus in justo
-                                                    pulvinar
-                                                    tempor. Aliquam tellus nulla, sollicitudin at euismod.</p>
-                                                <div class="product-list__btn-box">
-                                                    <a href="cart.html" class="thm-btn product-list__btn">Add to
-                                                        cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--Products List Single End-->
-                                    <!--Products List Single Start-->
-                                    <div class="product-list__single">
-                                        <div class="product-list__single-inner">
-                                            <div class="product-list__img-box">
-                                                <div class="product-list__img">
-                                                    <img src="frontend/assets/images/shop/product-list-1-4.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="product-list__icon-boxes">
-                                                    <a href="#"><i class="far fa-heart"></i></a>
-                                                    <a href="#"><i class="fas fa-eye"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-list__content">
-                                                <div class="product-list__review">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <h4 class="product-list__title"><a
-                                                        href="{{ route('frontend.products.detail') }}">Apples</a>
-                                                </h4>
-                                                <p class="product-list__price">$16.00</p>
-                                                <p class="product-list__text">Mauris non dignissim purus, ac commodo
-                                                    diam.
-                                                    Donec sit amet lacinia nulla. Aliquam quis purus in justo
-                                                    pulvinar
-                                                    tempor. Aliquam tellus nulla, sollicitudin at euismod.</p>
-                                                <div class="product-list__btn-box">
-                                                    <a href="cart.html" class="thm-btn product-list__btn">Add to
-                                                        cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--Products List Single End-->
-                                    <!--Products List Single Start-->
-                                    <div class="product-list__single">
-                                        <div class="product-list__single-inner">
-                                            <div class="product-list__img-box">
-                                                <div class="product-list__img">
-                                                    <img src="frontend/assets/images/shop/product-list-1-5.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="product-list__icon-boxes">
-                                                    <a href="#"><i class="far fa-heart"></i></a>
-                                                    <a href="#"><i class="fas fa-eye"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-list__content">
-                                                <div class="product-list__review">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <h4 class="product-list__title"><a
-                                                        href="{{ route('frontend.products.detail') }}">Red
-                                                        grapes</a>
-                                                </h4>
-                                                <p class="product-list__price">$17.00</p>
-                                                <p class="product-list__text">Mauris non dignissim purus, ac commodo
-                                                    diam.
-                                                    Donec sit amet lacinia nulla. Aliquam quis purus in justo
-                                                    pulvinar
-                                                    tempor. Aliquam tellus nulla, sollicitudin at euismod.</p>
-                                                <div class="product-list__btn-box">
-                                                    <a href="cart.html" class="thm-btn product-list__btn">Add to
-                                                        cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--Products List Single End-->
-                                    <!--Products List Single Start-->
-                                    <div class="product-list__single">
-                                        <div class="product-list__single-inner">
-                                            <div class="product-list__img-box">
-                                                <div class="product-list__img">
-                                                    <img src="frontend/assets/images/shop/product-list-1-6.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="product-list__icon-boxes">
-                                                    <a href="#"><i class="far fa-heart"></i></a>
-                                                    <a href="#"><i class="fas fa-eye"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-list__content">
-                                                <div class="product-list__review">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <h4 class="product-list__title"><a
-                                                        href="{{ route('frontend.products.detail') }}">Lemons</a>
-                                                </h4>
-                                                <p class="product-list__price">$10.00</p>
-                                                <p class="product-list__text">Mauris non dignissim purus, ac commodo
-                                                    diam.
-                                                    Donec sit amet lacinia nulla. Aliquam quis purus in justo
-                                                    pulvinar
-                                                    tempor. Aliquam tellus nulla, sollicitudin at euismod.</p>
-                                                <div class="product-list__btn-box">
-                                                    <a href="cart.html" class="thm-btn product-list__btn">Add to
-                                                        cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                     <!--Products List Single End-->
                                 </div><!-- /.product-list__inner -->
                                 <div class="row">
@@ -544,4 +356,42 @@
     </section>
     <!--Subscribe One End-->
 
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            function fetchFilteredData() {
+                let search = $("#search").val();
+                let minPrice = $("#min_price").val();
+                let maxPrice = $("#max_price").val();
+                let category = $(".shop-category ul li a.active").data("category");
+                let sortBy = $("#sort_by").val();
+
+                $.ajax({
+                    url: "{{ route('frontend.products') }}",
+                    method: "GET",
+                    data: {
+                        search: search,
+                        min_price: minPrice,
+                        max_price: maxPrice,
+                        category: category,
+                        sort_by: sortBy
+                    },
+                    success: function(response) {
+                        $("#productListGridTabContent").html(response);
+                    }
+                });
+            }
+
+            $("#search, #min_price, #max_price, #sort_by").on("input change", function() {
+                fetchFilteredData();
+            });
+
+            $(".shop-category ul li a").on("click", function() {
+                $(".shop-category ul li a").removeClass("active");
+                $(this).addClass("active");
+                fetchFilteredData();
+            });
+        });
+    </script>
 @endsection
