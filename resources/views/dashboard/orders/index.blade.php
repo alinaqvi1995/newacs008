@@ -107,7 +107,7 @@
                                                                             Status
                                                                         </button>
                                                                     </li>
-                                                                    <li>
+                                                                    {{-- <li>
                                                                         <form
                                                                             action="{{ route('orders.destroy', $order->id) }}"
                                                                             method="POST"
@@ -119,7 +119,7 @@
                                                                                 <i class="ph ph-trash me-2"></i> Delete
                                                                             </button>
                                                                         </form>
-                                                                    </li>
+                                                                    </li> --}}
                                                                 </ul>
                                                             </div>
                                                         </td>

@@ -6,16 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
-    {
-        $orders = Order::with('orderItems.product')->latest()->get();
-        return response()->json($orders);
-    }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -50,5 +45,65 @@ class OrderController extends Controller
         Cart::where('user_id', $request->user_id)->delete();
 
         return response()->json(['message' => 'Order placed successfully', 'order' => $order]);
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'order_id' => 'required|exists:orders,id',
+            'status' => 'required|in:confirmed,pending,shipped,delivered,canceled',
+        ]);
+
+        $order = Order::findOrFail($request->order_id);
+
+        if ($request->status === 'confirmed') {
+            // Reduce product quantity
+            foreach ($order->orderItems as $item) {
+                $product = Product::find($item->product_id);
+                if ($product && $product->quantity >= $item->quantity) {
+                    $product->quantity -= $item->quantity;
+                    $product->save();
+                } else {
+                    return response()->json(['message' => 'Insufficient stock for ' . $product->name], 400);
+                }
+            }
+        } elseif ($order->status === 'confirmed' && $request->status === 'canceled') {
+            // Restock product if order is canceled after confirmation
+            foreach ($order->orderItems as $item) {
+                $product = Product::find($item->product_id);
+                if ($product) {
+                    $product->quantity += $item->quantity;
+                    $product->save();
+                }
+            }
+        }
+
+        // Update status
+        $order->status = $request->status;
+        $order->save();
+
+        return response()->json(['message' => 'Order status updated successfully']);
+    }
+
+    public function destroy($id)
+    {
+        $order = Order::findOrFail($id);
+
+        // If order was confirmed, restock products before deleting
+        if ($order->status === 'confirmed') {
+            foreach ($order->orderItems as $item) {
+                $product = Product::find($item->product_id);
+                if ($product) {
+                    $product->quantity += $item->quantity;
+                    $product->save();
+                }
+            }
+        }
+
+        // Delete order and its items
+        $order->orderItems()->delete();
+        $order->delete();
+
+        return response()->json(['message' => 'Order deleted successfully']);
     }
 }
