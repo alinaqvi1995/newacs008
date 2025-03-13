@@ -31,12 +31,14 @@
                                         <table class="table table-custom align-middle table-borderless table-nowrap">
                                             <thead>
                                                 <tr>
+                                                    <th>Sr #</th>
                                                     <th>Email</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($subscribers as $subscriber)
+                                                @foreach ($subscribers as $key => $subscriber)
                                                     <tr>
+                                                        <td>{{ $key++ }}</td>
                                                         <td>{{ $subscriber->email }}</td>
                                                     </tr>
                                                 @endforeach

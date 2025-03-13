@@ -39,13 +39,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($wishlists as $wishlist)
+                                                @foreach ($wishlists as $key => $wishlist)
                                                     <tr>
+                                                        <td>{{ $key++ }}</td>
                                                         <td>{{ $wishlist->user->name ?? 'N/A' }}</td>
                                                         <td>{{ $wishlist->product->name ?? 'N/A' }}</td>
                                                         <td>
                                                             @if ($wishlist->product && $wishlist->product->image)
-                                                                <img src="{{ asset('storage/' . $wishlist->product->image) }}"
+                                                                <img src="{{ asset($wishlist->product->image) }}"
                                                                     alt="{{ $wishlist->product->name }}" width="50">
                                                             @else
                                                                 <span>No Image</span>
