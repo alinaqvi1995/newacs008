@@ -91,6 +91,14 @@
                     <a href="{{ route('products.index') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
                             data-key="t-calendar">Products</span> </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('all.subscribers') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
+                            data-key="t-calendar">Subscribers</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('all.subscribers') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
+                            data-key="t-calendar">Wishlists</span> </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a href="{{ route('tags.index') }}" class="nav-link menu-link"> <i class="bx bx-tag"></i> <span
                             data-key="t-calendar">Tags</span> </a>
