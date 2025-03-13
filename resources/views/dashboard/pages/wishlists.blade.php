@@ -69,3 +69,23 @@
         </div>
     </div>
 @endsection
+@section('extra_script')
+    <script>
+        $(document).ready(function() {
+            $(".view-item-btn").on("click", function() {
+                // Find the closest table row
+                var row = $(this).closest("tr");
+
+                // Get customer details from the row
+                var customerName = row.find(".customer-name-elem").text();
+                var customerEmail = row.find(".email").text();
+                var customerImage = row.find(".customer-image-elem").attr("src");
+
+                // Update the right-side card
+                $(".overview-name").text(customerName);
+                $(".overview-email").text(customerEmail);
+                $(".overview-img").attr("src", customerImage);
+            });
+        });
+    </script>
+@endsection
