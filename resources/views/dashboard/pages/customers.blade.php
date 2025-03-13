@@ -132,23 +132,23 @@
                                         <img src="backend/assets/images/users/48/avatar-5.jpg" alt=""
                                             class="avatar-sm rounded overview-img">
                                     </div> --}}
-                                    <div class="flex-grow-1">
+                                    {{-- <div class="flex-grow-1">
                                         <h6 class="fs-lg overview-name">Verona Mosciski</h6>
                                         <p class="text-muted mb-0"><a href="#!"
                                                 class="overview-nick-name">@mosciski</a></p>
-                                    </div>
+                                    </div> --}}
                                     <div class="flex-shrink-0">
-                                        <button type="button" class="btn btn-subtle-primary custom-toggle active"
+                                        {{-- <button type="button" class="btn btn-subtle-primary custom-toggle active"
                                             data-bs-toggle="button">
                                             <span class="icon-on"><i class="ri-add-line align-bottom me-1"></i>
                                                 Follow</span>
                                             <span class="icon-off"><i class="ri-user-unfollow-line align-bottom me-1"></i>
                                                 Unfollow</span>
-                                        </button>
-                                        <button class="btn btn-subtle-danger btn-icon"><i class="ph-trash"></i></button>
+                                        </button> --}}
+                                        {{-- <button class="btn btn-subtle-danger btn-icon"><i class="ph-trash"></i></button> --}}
                                     </div>
                                 </div>
-                                <ul class="d-flex align-items-center gap-2 list-unstyled mt-4">
+                                {{-- <ul class="d-flex align-items-center gap-2 list-unstyled mt-4">
                                     <li>Social Media:</li>
                                     <li>
                                         <a href="#!" class="btn btn-subtle-success btn-icon btn-sm"><i
@@ -162,7 +162,7 @@
                                         <a href="#!" class="btn btn-subtle-secondary btn-icon btn-sm"><i
                                                 class="bi bi-github"></i></a>
                                     </li>
-                                </ul>
+                                </ul> --}}
                                 <div>
                                     <table class="table table-sm table-borderless">
                                         <tbody>
@@ -192,7 +192,7 @@
                                 <h6 class="fs-md px-4 mb-3">Order History</h6>
                                 <div data-simplebar class="px-4" style="max-height: 325px;">
                                     <div class="vstack gap-3">
-                                        <div class="p-2 border border-dashed">
+                                        {{-- <div class="p-2 border border-dashed">
                                             <div class="d-flex align-items-center gap-2">
                                                 <div class="avatar-sm flex-shrink-0">
                                                     <div class="avatar-title bg-light rounded">
@@ -221,7 +221,7 @@
                                                             class="ph-arrow-right"></i></button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -264,6 +264,7 @@
                         if (response.success) {
                             var ordersHtml = "";
                             $.each(response.orders, function(index, order) {
+                                console.log('ordersss', order);
                                 ordersHtml += `
                             <div class="p-2 border border-dashed">
                                 <div class="d-flex align-items-center gap-2">
@@ -275,15 +276,8 @@
                                     <div class="flex-grow-1">
                                         <a href="#!">
                                             <h6 class="fs-md mb-2">${order.product_name}</h6>
+                                            <p>${order.product_name}</p>
                                         </a>
-                                        <ul class="hstack list-unstyled gap-2 mb-0 fs-sm fw-medium text-muted">
-                                            <li>
-                                                <i class="ph-star align-baseline"></i> ${order.rating}
-                                            </li>
-                                            <li>
-                                                <i class="ph-shopping-cart align-baseline"></i> ${order.total_purchases}
-                                            </li>
-                                        </ul>
                                     </div>
                                     <div class="text-end">
                                         <h5 class="fs-md text-primary mb-0">RS ${order.price}</h5>
@@ -305,22 +299,4 @@
             });
         });
     </script>
-    {{-- <script>
-        $(document).ready(function() {
-            $(".view-item-btn").on("click", function() {
-                // Find the closest table row
-                var row = $(this).closest("tr");
-
-                // Get customer details from the row
-                var customerName = row.find(".customer-name-elem").text();
-                var customerEmail = row.find(".email").text();
-                var customerImage = row.find(".customer-image-elem").attr("src");
-
-                // Update the right-side card
-                $(".overview-name").text(customerName);
-                $(".overview-email").text(customerEmail);
-                $(".overview-img").attr("src", customerImage);
-            });
-        });
-    </script> --}}
 @endsection
