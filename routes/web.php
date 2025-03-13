@@ -13,7 +13,7 @@ use App\Http\Controllers\Dashboard\TagController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SubscriberController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Dashboard\OrderController;
 
 /*
 |--------------------------------------------------------------------------

@@ -108,9 +108,6 @@
                         </li>
                     </ul>
                     <div class="cart-page__buttons">
-                        <div class="cart-page__buttons-1">
-                            <a href="#" class="thm-btn">Update</a>
-                        </div>
                         <div class="cart-page__buttons-2">
                             <a href="" class="thm-btn">Checkout</a>
                         </div>
