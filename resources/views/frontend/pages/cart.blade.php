@@ -9,7 +9,7 @@
         <div class="container">
             <div class="page-header__inner">
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ route('index') }}">Home</a></li>
                     <li><span>/</span></li>
                     <li>Shop</li>
                 </ul>
@@ -41,7 +41,9 @@
                                         <div class="img-box">
                                             <img src="{{ $item->product->image }}" alt="">
                                         </div>
-                                        <h3><a href="product-details.html">{{ $item->product->name }}</a></h3>
+                                        <h3><a
+                                                href="{{ route('frontend.products.detail', $item->product->slug) }}">{{ $item->product->name }}</a>
+                                        </h3>
                                     </div>
                                 </td>
                                 <td>RS {{ number_format($item->product->price, 2) }}</td>
@@ -110,7 +112,7 @@
                             <a href="#" class="thm-btn">Update</a>
                         </div>
                         <div class="cart-page__buttons-2">
-                            <a href="checkout.html" class="thm-btn">Checkout</a>
+                            <a href="" class="thm-btn">Checkout</a>
                         </div>
                     </div>
                 </div>
@@ -224,6 +226,38 @@
 
                 $(".cart-subtotal, .cart-total-amount").text("RS " + subtotal.toFixed(2));
             }
+
+            $(".cart-page__buttons-2 .thm-btn").click(function(e) {
+                e.preventDefault();
+
+                let cartItems = [];
+                $(".cart-table tbody tr").each(function() {
+                    cartItems.push({
+                        id: $(this).data("id"),
+                        quantity: $(this).find(".product-qty").val()
+                    });
+                });
+
+                $.ajax({
+                    url: "{{ route('place.order') }}",
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        cartItems: cartItems
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            window.location.href =
+                            "{{ route('my.cart') }}";
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function(xhr) {
+                        alert("Something went wrong. Please try again.");
+                    }
+                });
+            });
         });
     </script>
 @endsection

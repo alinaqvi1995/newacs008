@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\TagController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,10 @@ Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name
 Route::delete('/wishlist/remove/{id}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
 
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe.store');
+
+// order
+Route::get('/orders', [OrderController::class, 'index']);
+Route::post('/orders', [OrderController::class, 'store'])->name('place.order');
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
