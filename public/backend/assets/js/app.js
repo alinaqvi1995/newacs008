@@ -1114,33 +1114,33 @@ File: Main Js File
 	}
 
 	// Counter Number
-	function counter() {
-		const counters = document.querySelectorAll(".counter-value");
-		const speed = 250;
+	// function counter() {
+	// 	const counters = document.querySelectorAll(".counter-value");
+	// 	const speed = 250;
 
-		if (counters.length) {
-			counters.forEach((counter) => {
-				const target = +counter.getAttribute("data-target");
-				const inc = target / speed;
+	// 	if (counters.length) {
+	// 		counters.forEach((counter) => {
+	// 			const target = +counter.getAttribute("data-target");
+	// 			const inc = target / speed;
 
-				let count = 0;
-				const updateCount = () => {
-					count += inc;
-					if (count < target) {
-						counter.innerText = numberWithCommas(count.toFixed(0));
-						setTimeout(updateCount, 1);
-					} else {
-						counter.innerText = numberWithCommas(target);
-					}
-				};
-				updateCount();
-			});
-		}
+	// 			let count = 0;
+	// 			const updateCount = () => {
+	// 				count += inc;
+	// 				if (count < target) {
+	// 					counter.innerText = numberWithCommas(count.toFixed(0));
+	// 					setTimeout(updateCount, 1);
+	// 				} else {
+	// 					counter.innerText = numberWithCommas(target);
+	// 				}
+	// 			};
+	// 			updateCount();
+	// 		});
+	// 	}
 
-		function numberWithCommas(x) {
-			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		}
-	}
+	// 	function numberWithCommas(x) {
+	// 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	// 	}
+	// }
 
 	function updateHorizontalMenus() {
 		const twoColumnMenu = document.getElementById("two-column-menu");
