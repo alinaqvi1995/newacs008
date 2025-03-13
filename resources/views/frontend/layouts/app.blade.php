@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180"
@@ -114,7 +115,7 @@
         <div class="search-popup__content">
             <form action="{{ route('frontend.products') }}" method="GET">
                 <label for="search" class="sr-only">search here</label>
-                <input type="text" id="search" name="search"  placeholder="Search Here..." />
+                <input type="text" id="search" name="search" placeholder="Search Here..." />
                 <button type="submit" aria-label="search submit" class="thm-btn">
                     <i class="icon-magnifying-glass"></i>
                 </button>
@@ -145,7 +146,10 @@
                     data: {
                         product_id: productId,
                         quantity: quantity,
-                        _token: "{{ csrf_token() }}"
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content") // Fetch CSRF token
                     },
                     success: function(response) {
                         alert(response.message);
@@ -171,8 +175,11 @@
                     url: "{{ route('wishlist.add') }}",
                     type: "POST",
                     data: {
-                        _token: "{{ csrf_token() }}",
                         product_id: productId
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content") // Fetch CSRF token
                     },
                     success: function(response) {
                         alert(response.message);
@@ -202,7 +209,10 @@
                     method: "POST",
                     data: {
                         email: email,
-                        _token: "{{ csrf_token() }}"
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content") // Fetch CSRF token
                     },
                     beforeSend: function() {
                         responseBox.html('<span style="color: blue;">Processing...</span>');
