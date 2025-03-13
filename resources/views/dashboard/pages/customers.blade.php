@@ -48,13 +48,13 @@
                                                             class="fw-medium link-primary">{{ $key + 1 }}</a></td>
                                                     <td class="customer">
                                                         <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0 me-2">
+                                                            {{-- <div class="flex-shrink-0 me-2">
                                                                 <div>
                                                                     <img class="avatar-xs rounded-circle customer-image-elem"
                                                                         alt=""
                                                                         src="backend/assets/images/users/32/avatar-2.jpg">
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="flex-grow-1">
                                                                 <h5 class="fs-base mb-0"><a href="#"
                                                                         class="text-reset customer-name-elem">{{ $row->name }}</a>
@@ -128,10 +128,10 @@
                         <div class="card" id="overview-card">
                             <div class="card-body">
                                 <div class="d-flex gap-3 align-items-center flex-wrap">
-                                    <div class="flex-shirnk-0">
+                                    {{-- <div class="flex-shirnk-0">
                                         <img src="backend/assets/images/users/48/avatar-5.jpg" alt=""
                                             class="avatar-sm rounded overview-img">
-                                    </div>
+                                    </div> --}}
                                     <div class="flex-grow-1">
                                         <h6 class="fs-lg overview-name">Verona Mosciski</h6>
                                         <p class="text-muted mb-0"><a href="#!"
@@ -170,10 +170,10 @@
                                                 <th>Email</th>
                                                 <td class="overview-email">vmosciski@dosix.com</td>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <th>Contact</th>
                                                 <td class="overview-contact">+(253) 12345 67890</td>
-                                            </tr>
+                                            </tr> --}}
                                             <tr>
                                                 <th>Joining Date</th>
                                                 <td class="overview-date">20 Feb, 2023</td>
@@ -245,12 +245,14 @@
                 // Get customer details from the row
                 var customerName = row.find(".customer-name-elem").text();
                 var customerEmail = row.find(".email").text();
+                var customerDate = row.find(".date").text();
                 var customerImage = row.find(".customer-image-elem").attr("src");
                 var customerId = row.find(".id").text(); // Assuming ID is stored here
 
                 // Update the right-side card
                 $(".overview-name").text(customerName);
                 $(".overview-email").text(customerEmail);
+                $(".overview-date").text(customerDate);
                 $(".overview-img").attr("src", customerImage);
 
                 // Fetch order history dynamically using AJAX
