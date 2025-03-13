@@ -49,16 +49,18 @@ class DashboardController extends Controller
     public function getCustomerOrders($id)
     {
         $orders = Order::where('user_id', $id)
-            ->with('product')
+            ->with('orderItems.product') // Load products through order items
             ->get()
-            ->map(function ($order) {
-                return [
-                    'product_name' => $order->product->name,
-                    'image' => asset($order->product->image),
-                    'price' => $order->price,
-                    'rating' => $order->rating,
-                    'total_purchases' => $order->total_purchases,
-                ];
+            ->flatMap(function ($order) {
+                return $order->orderItems->map(function ($item) {
+                    return [
+                        'product_name' => $item->product->name ?? 'Unknown Product',
+                        'image' => asset($item->product->image ?? 'default.png'),
+                        'price' => $item->price,
+                        'rating' => $item->product->rating ?? 0,
+                        'total_purchases' => $item->product->total_purchases ?? 0,
+                    ];
+                });
             });
 
         return response()->json([
