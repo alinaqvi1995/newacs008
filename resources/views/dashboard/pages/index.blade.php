@@ -53,7 +53,7 @@
                                     <p class="text-muted">Total Stock</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            $<span class="counter-value" data-target="{{ number_format($totalStockValue, 2) }}">0</span>k
+                                            $<span class="counter-value" data-target="{{ $totalStockValue }}">0</span>k
                                         </h4>
                                         <p class="mb-0 text-muted">
                                             <span class="flex-shrink-0 badge bg-danger-subtle text-danger rounded-pill"><i
@@ -68,7 +68,7 @@
                                     <p class="text-muted">Total Sale</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            $<span class="counter-value" data-target="{{ number_format($totalSale, 2) }}">0</span>M
+                                            $<span class="counter-value" data-target="{{ $totalSale }}">0</span>M
                                         </h4>
                                         <p class="mb-0 text-muted">
                                             <span class="flex-shrink-0 badge bg-success-subtle text-success rounded-pill"><i
