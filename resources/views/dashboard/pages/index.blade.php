@@ -53,13 +53,13 @@
                                     <p class="text-muted">Total Stock</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            $<span class="counter-value" data-target="{{ $totalStockValue }}">0</span>k
+                                            RS <span class="counter-value" data-target="{{ $totalStockValue }}">0</span>
                                         </h4>
-                                        <p class="mb-0 text-muted">
+                                        {{-- <p class="mb-0 text-muted">
                                             <span class="flex-shrink-0 badge bg-danger-subtle text-danger rounded-pill"><i
                                                     class="ph ph-trend-up align-middle me-1"></i>
                                                 0.8%</span>
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                             </div>
@@ -68,13 +68,13 @@
                                     <p class="text-muted">Total Sale</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            $<span class="counter-value" data-target="{{ $totalSale }}">0</span>M
+                                            RS <span class="counter-value" data-target="{{ $totalSale }}">0</span>
                                         </h4>
-                                        <p class="mb-0 text-muted">
+                                        {{-- <p class="mb-0 text-muted">
                                             <span class="flex-shrink-0 badge bg-success-subtle text-success rounded-pill"><i
                                                     class="ph ph-trend-up align-middle me-1"></i>
                                                 2.4%</span>
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                             </div>
