@@ -38,72 +38,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div>
-                                    <div class="table-responsive">
-                                        <table class="table table-custom align-middle table-borderless table-nowrap">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr #.</th>
-                                                    <th>Product</th>
-                                                    <th>Price</th> //price of single prod format 00.00
-                                                    <th>Quantity</th>
-                                                    <th>Subtotal</th> //price of single prod * quantity format 00.00
-                                                    <th>User</th>
-                                                    <th>Created At</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="list form-check-all">
-                                                @foreach ($orders as $key => $item)
-                                                    <tr>
-                                                        <td>{{ $key + 1 }}</td>
-                                                        <td class="category">{{ $item->category->name }}</td>
-                                                        <td class="stock">{{ $item->quantity }}</td>
-                                                        <td class="price">${{ $item->price }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!--end table-responsive-->
-
-                                    <div class="noresult" style="display: none">
-                                        <div class="text-center py-4">
-                                            <div class="avatar-md mx-auto mb-4">
-                                                <div class="avatar-title bg-light text-primary rounded-circle fs-4xl">
-                                                    <i class="bi bi-search"></i>
-                                                </div>
-                                            </div>
-                                            <h5 class="mt-2">Sorry! No Result Found</h5>
-                                            <p class="text-muted mb-0">
-                                                We've searched more than 150+ products We did not
-                                                find any products for you search.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- end noresult -->
-
-                                    <div class="row mb-4 align-items-center" id="pagination-element">
-                                        <div class="col-sm">
-                                            <div class="text-muted text-center text-sm-start">
-                                                Showing <span class="fw-semibold">10</span> of
-                                                <span class="fw-semibold">35</span> Results
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-auto mt-3 mt-sm-0">
-                                            <div class="pagination-wrap hstack gap-2 justify-content-center">
-                                                <a class="page-item pagination-prev disabled" href="#">
-                                                    <i class="mdi mdi-chevron-left align-middle"></i>
-                                                </a>
-                                                <ul class="pagination listjs-pagination mb-0"></ul>
-                                                <a class="page-item pagination-next" href="#">
-                                                    <i class="mdi mdi-chevron-right align-middle"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end pagination-element -->
-                                </div> --}}
                                 <div>
                                     <div class="table-responsive">
                                         <table class="table table-custom align-middle table-borderless table-nowrap">
@@ -118,6 +52,7 @@
                                                     <th>Total Price</th> <!-- Order total -->
                                                     <th>User</th>
                                                     <th>Created At</th>
+                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list form-check-all">
@@ -145,10 +80,16 @@
                                                                 </div>
                                                             @endforeach
                                                         </td>
-                                                        <td>${{ number_format($order->orderItems->sum(fn($item) => $item->price * $item->quantity), 2) }}
+                                                        <td>${{ number_format(
+                                                            $order->orderItems->sum(function ($item) {
+                                                                return $item->price * $item->quantity;
+                                                            }),
+                                                            2,
+                                                        ) }}
                                                         </td>
                                                         <td>{{ $order->user->name ?? 'Guest' }}</td>
                                                         <td>{{ $order->created_at->format('d M Y') }}</td>
+                                                        <td>{{ $order->status }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>

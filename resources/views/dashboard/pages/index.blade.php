@@ -139,7 +139,13 @@
                                                                 </div>
                                                             @endforeach
                                                         </td>
-                                                        <td>${{ number_format($order->orderItems->sum(fn($item) => $item->price * $item->quantity), 2) }}
+                                                        <td>${{ number_format(
+                                                            $order->orderItems->sum(function ($item) {
+                                                                return $item->price * $item->quantity;
+                                                            }),
+                                                            2,
+                                                        ) }}
+                                                        </td>
                                                         </td>
                                                         <td>{{ $order->user->name ?? 'Guest' }}</td>
                                                         <td>{{ $order->created_at->format('d M Y') }}</td>
