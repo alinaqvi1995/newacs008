@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Wishlist;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -21,8 +22,9 @@ class DashboardController extends Controller
 
     public static function dashboard()
     {
+        $products = Product::all();
         $orders = Order::with('user', 'orderItems.product')->latest()->paginate(10);
-        return view('dashboard.pages.index', compact('orders'));
+        return view('dashboard.pages.index', compact('orders', 'products'));
     }
 
     public static function orders()
