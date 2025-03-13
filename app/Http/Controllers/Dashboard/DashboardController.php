@@ -23,8 +23,8 @@ class DashboardController extends Controller
     public static function dashboard()
     {
         $products = Product::all();
-        $ordersTotal = Order::latest()->take(5);
-        $orders = Order::with('user', 'orderItems.product')->latest()->paginate(10);
+        $ordersTotal = Order::all();
+        $orders = Order::with('user', 'orderItems.product')->latest()->take(5);
         return view('dashboard.pages.index', compact('orders', 'products', 'ordersTotal'));
     }
 
