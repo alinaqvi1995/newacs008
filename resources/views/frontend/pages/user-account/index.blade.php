@@ -61,11 +61,13 @@
                                     <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                 </div>
 
-                                <div class="mt-4">
+                                {{-- <div class="mt-4">
                                     <button class="btn btn-primary w-100" type="submit">Sign In</button>
+                                </div> --}}
+                                <div class="contact-page__btn-box">
+                                    <button type="submit" class="thm-btn contact-page__btn">Sign In</button>
                                 </div>
-
-                                <div class="mt-4 pt-2 text-center">
+                                {{-- <div class="mt-4 pt-2 text-center">
                                     <div class="signin-other-title position-relative">
                                         <h5 class="fs-md mb-4 title">Sign In with</h5>
                                     </div>
@@ -79,7 +81,7 @@
                                         <button type="button" class="btn btn-subtle-info btn-icon"><i
                                                 class="ri-twitter-fill fs-lg"></i></button>
                                     </div>
-                                </div>
+                                </div> --}}
                             </form>
                         </div>
                     </div>
@@ -145,7 +147,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <p class="mb-0 fs-xs text-muted fst-italic">By registering you agree to the Dosix <a
+                                    <p class="mb-0 fs-xs text-muted fst-italic">By registering you agree to the Indigo <a
                                             href="pages-term-conditions.html"
                                             class="text-primary text-decoration-underline fst-normal fw-medium">Terms of
                                             Use</a></p>
@@ -160,11 +162,10 @@
                                     <p id="pass-number" class="invalid fs-xs mb-0">A least <b>number</b> (0-9)</p>
                                 </div>
 
-                                <div class="mt-4">
-                                    <button class="btn btn-primary w-100" type="submit">Sign Up</button>
+                                <div class="contact-page__btn-box">
+                                    <button type="submit" class="thm-btn contact-page__btn">Sign Up</button>
                                 </div>
-
-                                <div class="mt-4 text-center">
+                                {{-- <div class="mt-4 text-center">
                                     <div class="signin-other-title position-relative">
                                         <h5 class="fs-sm mb-4 title text-muted">Create account with</h5>
                                     </div>
@@ -179,7 +180,7 @@
                                         <button type="button" class="btn btn-subtle-info btn-icon "><i
                                                 class="ri-twitter-fill fs-lg"></i></button>
                                     </div>
-                                </div>
+                                </div> --}}
                             </form>
                         </div>
                     </div>
