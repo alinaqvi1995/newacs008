@@ -88,54 +88,56 @@
                                 <div class="table-responsive table-card">
                                     <table class="table align-middle table-nowrap">
                                         <tbody class="list">
-                                            @foreach ($customers as $row)
-                                            <tr>
-                                                <td class="id d-none"><a href="javascript:void(0);"
-                                                        class="fw-medium link-primary">01</a></td>
-                                                <td class="customer">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="flex-shrink-0 me-2">
-                                                            <div>
-                                                                <img class="avatar-xs rounded-circle customer-image-elem"
-                                                                    alt=""
-                                                                    src="backend/assets/images/users/32/avatar-2.jpg">
+                                            @foreach ($customers as $key => $row)
+                                                <tr>
+                                                    <td class="id d-none"><a href="javascript:void(0);"
+                                                            class="fw-medium link-primary">{{ $key + 1 }}</a></td>
+                                                    <td class="customer">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="flex-shrink-0 me-2">
+                                                                <div>
+                                                                    <img class="avatar-xs rounded-circle customer-image-elem"
+                                                                        alt=""
+                                                                        src="backend/assets/images/users/32/avatar-2.jpg">
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-grow-1">
+                                                                <h5 class="fs-base mb-0"><a href="#"
+                                                                        class="text-reset customer-name-elem">{{ $row->name }}</a>
+                                                                </h5>
                                                             </div>
                                                         </div>
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="fs-base mb-0"><a href="#"
-                                                                    class="text-reset customer-name-elem">{{ $row->name }}</a></h5>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="email">{{ $row->email }}</td>
-                                                {{-- <td class="contact">+(253) 12345 67890</td> --}}
-                                                <td class="date">{{ $row->created_at->format('d M, Y') }}</td>
-                                                {{-- <td class="status"><span
+                                                    </td>
+                                                    <td class="email">{{ $row->email }}</td>
+                                                    {{-- <td class="contact">+(253) 12345 67890</td> --}}
+                                                    <td class="date">{{ $row->created_at->format('d M, Y') }}</td>
+                                                    {{-- <td class="status"><span
                                                         class="badge bg-secondary-subtle text-secondary">Unactive</span>
                                                 </td> --}}
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-subtle-secondary btn-sm dropdown"
-                                                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="ri-more-fill align-middle"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end">
-                                                            <li><a class="dropdown-item view-item-btn"
-                                                                    href="javascript:void(0);"><i
-                                                                        class="ri-eye-fill align-bottom me-2 text-muted"></i>View</a>
-                                                            </li>
-                                                            <li><a class="dropdown-item edit-item-btn" href="#showModal"
-                                                                    data-bs-toggle="modal"><i
-                                                                        class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                                                    Edit</a></li>
-                                                            <li><a class="dropdown-item remove-item-btn"
-                                                                    data-bs-toggle="modal" href="#deleteRecordModal"><i
-                                                                        class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                    Delete</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-subtle-secondary btn-sm dropdown"
+                                                                type="button" data-bs-toggle="dropdown"
+                                                                aria-expanded="false">
+                                                                <i class="ri-more-fill align-middle"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                <li><a class="dropdown-item view-item-btn"
+                                                                        href="javascript:void(0);"><i
+                                                                            class="ri-eye-fill align-bottom me-2 text-muted"></i>View</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item edit-item-btn" href="#showModal"
+                                                                        data-bs-toggle="modal"><i
+                                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                                                        Edit</a></li>
+                                                                <li><a class="dropdown-item remove-item-btn"
+                                                                        data-bs-toggle="modal" href="#deleteRecordModal"><i
+                                                                            class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                        Delete</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -303,4 +305,3 @@
         });
     </script>
 @endsection
-

@@ -38,7 +38,7 @@
                                             <tbody>
                                                 @foreach ($subscribers as $key => $subscriber)
                                                     <tr>
-                                                        <td>{{ $key++ }}</td>
+                                                        <td>{{ $key + 1 }}</td>
                                                         <td>{{ $subscriber->email }}</td>
                                                     </tr>
                                                 @endforeach
