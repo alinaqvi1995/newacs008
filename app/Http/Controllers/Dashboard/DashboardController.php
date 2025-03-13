@@ -8,6 +8,7 @@ use App\Models\Wishlist;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
