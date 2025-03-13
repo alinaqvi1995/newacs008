@@ -1,7 +1,7 @@
 <footer class="site-footer">
-    <div class="site-footer__bg" style="background-image: url(assets/images/backgrounds/site-footer-bg-img.png);"></div>
+    <div class="site-footer__bg" style="background-image: url(frontend/assets/images/backgrounds/site-footer-bg-img.png);"></div>
     <div class="site-footer__ripped-paper"
-        style="background-image: url(assets/images/shapes/site-footer-ripped-paper.png);"></div>
+        style="background-image: url(frontend/assets/images/shapes/site-footer-ripped-paper.png);"></div>
     <div class="container">
         <div class="site-footer__top">
             <div class="row">
@@ -114,16 +114,16 @@
                 <div class="col-xl-12">
                     <div class="site-footer__bottom-inner">
                         <div class="site-footer__bottom-left">
-                            <p class="site-footer__bottom-text">© Copyright 2023 by <a href="#">Company.com</a>
+                            <p class="site-footer__bottom-text">© Copyright 2025 by <a href="/">Company.com</a>
                             </p>
                         </div>
                         <div class="site-footer__bottom-right">
                             <ul class="list-unstyled site-footer__bottom-menu">
-                                <li><a href="about.html">Terms & Conditions</a></li>
+                                {{-- <li><a href="about.html">Terms & Conditions</a></li>
                                 <li><span>/</span></li>
                                 <li><a href="about.html">Privacy Policy</a></li>
                                 <li><span>/</span></li>
-                                <li><a href="about.html">Privacy Policy</a></li>
+                                <li><a href="about.html">Privacy Policy</a></li> --}}
                             </ul>
                         </div>
                     </div>
