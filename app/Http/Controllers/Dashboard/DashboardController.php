@@ -32,7 +32,7 @@ class DashboardController extends Controller
             });
         });
         $totalStockValue = Product::sum(DB::raw('price * quantity'));
-        dd($products->toArray(), $ordersTotal->toArray(), $orders, $totalSale);
+        dd($products->toArray(), $ordersTotal->toArray(), $orders, $totalSale, $totalStockValue);
         return view('dashboard.pages.index', compact('orders', 'products', 'ordersTotal', 'totalSale', 'totalStockValue'));
     }
 
