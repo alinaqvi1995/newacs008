@@ -38,7 +38,7 @@
                                     <p class="text-muted">Total Orders</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            <span class="counter-value" data-target="{{ count($orders) }}">0</span>
+                                            <span class="counter-value" data-target="{{ count($$ordersTotal) }}">0</span>
                                         </h4>
                                         {{-- <p class="mb-0 text-muted">
                                             <span class="flex-shrink-0 badge bg-success-subtle text-success rounded-pill"><i
