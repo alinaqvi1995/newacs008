@@ -55,6 +55,7 @@ class DashboardController extends Controller
                 return $order->orderItems->map(function ($item) {
                     return [
                         'product_name' => $item->product->name ?? 'Unknown Product',
+                        'quantity' => $item->quantity,
                         'image' => asset($item->product->image ?? 'default.png'),
                         'price' => $item->price,
                         'rating' => $item->product->rating ?? 0,
