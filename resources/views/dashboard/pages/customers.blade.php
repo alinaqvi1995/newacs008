@@ -193,7 +193,7 @@
                                 </div>
                             </div>
                             <div class="card-body px-0 pt-0">
-                                <h6 class="fs-md px-4 mb-3">Order History</h6>
+                                <h6 class="fs-md px-4 mb-3">Order History <span class="order-count"></span></h6>
                                 <div data-simplebar class="px-4" style="max-height: 325px;">
                                     <div class="vstack gap-3">
                                         {{-- <div class="p-2 border border-dashed">
@@ -296,6 +296,7 @@
                             });
 
                             // Update order history
+                            $(".order-count").html(response.orders.length);
                             $(".vstack").html(ordersHtml);
                         }
                     }
