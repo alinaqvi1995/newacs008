@@ -237,5 +237,26 @@
         function setOrderId(orderId) {
             document.getElementById('order_id').value = orderId;
         }
+
+        $(document).ready(function() {
+            $('#statusForm').submit(function(e) {
+                e.preventDefault();
+
+                let orderId = $('#order_id').val();
+                let status = $('#status').val();
+                let formData = {
+                    _token: '{{ csrf_token() }}',
+                    order_id: orderId,
+                    status: status
+                };
+
+                $.post("{{ route('orders.updateStatus') }}", formData, function(response) {
+                    alert(response.message);
+                    location.reload();
+                }).fail(function(xhr) {
+                    alert(xhr.responseJSON.message);
+                });
+            });
+        });
     </script>
 @endsection

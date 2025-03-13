@@ -65,6 +65,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');
     Route::get('/add-product', [DashboardController::class, 'addProduct'])->name('addProduct');
+    Route::post('/orders/update-status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
     
     Route::resource('categories', CategoryController::class);
     Route::resource('brands', BrandController::class);
