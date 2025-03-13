@@ -28,7 +28,7 @@
                                     <p class="text-muted">Total Products</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            <span class="counter-value">{{ count($products) }}</span>
+                                            <span class="counter-value" data-target="{{ count($products) }}">0</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -38,13 +38,13 @@
                                     <p class="text-muted">Total Orders</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            <span class="counter-value" data-target="7115">0</span>
+                                            <span class="counter-value" data-target="{{ count($orders) }}">0</span>
                                         </h4>
-                                        <p class="mb-0 text-muted">
+                                        {{-- <p class="mb-0 text-muted">
                                             <span class="flex-shrink-0 badge bg-success-subtle text-success rounded-pill"><i
                                                     class="ph ph-trend-up align-middle me-1"></i>
                                                 1.5%</span>
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                             </div>
