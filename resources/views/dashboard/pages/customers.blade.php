@@ -132,11 +132,11 @@
                                         <img src="backend/assets/images/users/48/avatar-5.jpg" alt=""
                                             class="avatar-sm rounded overview-img">
                                     </div> --}}
-                                    {{-- <div class="flex-grow-1">
+                                    <div class="flex-grow-1">
                                         <h6 class="fs-lg overview-name">Verona Mosciski</h6>
-                                        <p class="text-muted mb-0"><a href="#!"
-                                                class="overview-nick-name">@mosciski</a></p>
-                                    </div> --}}
+                                        {{-- <p class="text-muted mb-0"><a href="#!"
+                                                class="overview-nick-name">@mosciski</a></p> --}}
+                                    </div>
                                     <div class="flex-shrink-0">
                                         {{-- <button type="button" class="btn btn-subtle-primary custom-toggle active"
                                             data-bs-toggle="button">

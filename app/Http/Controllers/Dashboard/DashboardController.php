@@ -49,7 +49,7 @@ class DashboardController extends Controller
     public function getCustomerOrders($id)
     {
         $orders = Order::where('user_id', $id)
-            ->with('orderItems.product') // Load products through order items
+            ->with('orderItems.product')
             ->get()
             ->flatMap(function ($order) {
                 return $order->orderItems->map(function ($item) {
