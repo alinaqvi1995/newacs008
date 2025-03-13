@@ -133,7 +133,7 @@
                                             class="avatar-sm rounded overview-img">
                                     </div> --}}
                                     <div class="flex-grow-1">
-                                        <h6 class="fs-lg overview-name">Verona Mosciski</h6>
+                                        <h6 class="fs-lg overview-name"></h6>
                                         {{-- <p class="text-muted mb-0"><a href="#!"
                                                 class="overview-nick-name">@mosciski</a></p> --}}
                                     </div>
@@ -168,7 +168,7 @@
                                         <tbody>
                                             <tr>
                                                 <th>Email</th>
-                                                <td class="overview-email">vmosciski@dosix.com</td>
+                                                <td class="overview-email"></td>
                                             </tr>
                                             {{-- <tr>
                                                 <th>Contact</th>
@@ -176,7 +176,7 @@
                                             </tr> --}}
                                             <tr>
                                                 <th>Joining Date</th>
-                                                <td class="overview-date">20 Feb, 2023</td>
+                                                <td class="overview-date"></td>
                                             </tr>
                                             {{-- <tr>
                                                 <th>Status</th>
