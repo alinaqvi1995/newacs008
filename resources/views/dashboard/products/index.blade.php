@@ -162,12 +162,12 @@
                                                         <td class="products">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="avatar-xs bg-light rounded p-1 me-2">
-                                                                    <img src="assets/images/products/32/img-1.png"
+                                                                    <img src="{{ asset($item->image) }}"
                                                                         alt="" class="img-fluid d-block" />
                                                                 </div>
                                                                 <div>
                                                                     <h6 class="mb-0">
-                                                                        <a href="apps-ecommerce-product-details.html"
+                                                                        <a href="{{ route('frontend.products.detail', $item->slug) }}"
                                                                             class="text-reset products">{{ $item->name }}</a>
                                                                     </h6>
                                                                 </div>
