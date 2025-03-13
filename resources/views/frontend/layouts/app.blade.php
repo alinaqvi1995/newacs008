@@ -135,29 +135,29 @@
                     .prev(".product-details__quantity")
                     .find(".quantity-input").val();
 
-                if (isAuthenticated == 0) {
+                if (isAuthenticated == 1) {
+                    $.ajax({
+                        url: "{{ route('cart.add') }}",
+                        method: "POST",
+                        data: {
+                            product_id: productId,
+                            quantity: quantity,
+                        },
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                                "content") // Fetch CSRF token
+                        },
+                        success: function(response) {
+                            alert(response.message);
+                        },
+                        error: function(xhr) {
+                            alert("Error adding to cart. Please try again.");
+                        }
+                    });
+                } else {
                     window.location.href = "{{ route('user.account') }}";
                     return false;
                 }
-
-                $.ajax({
-                    url: "{{ route('cart.add') }}",
-                    method: "POST",
-                    data: {
-                        product_id: productId,
-                        quantity: quantity,
-                    },
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                            "content") // Fetch CSRF token
-                    },
-                    success: function(response) {
-                        alert(response.message);
-                    },
-                    error: function(xhr) {
-                        alert("Error adding to cart. Please try again.");
-                    }
-                });
             });
 
             $(document).on("click", ".add-to-wishlist", function(e) {
@@ -166,28 +166,28 @@
                 var isAuthenticated = $(this).data('auth');
                 let productId = $(this).data("id");
 
-                if (isAuthenticated == 0) {
+                if (isAuthenticated == 1) {
+                    $.ajax({
+                        url: "{{ route('wishlist.add') }}",
+                        type: "POST",
+                        data: {
+                            product_id: productId
+                        },
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                                "content") // Fetch CSRF token
+                        },
+                        success: function(response) {
+                            alert(response.message);
+                        },
+                        error: function(xhr) {
+                            alert("Error.");
+                        }
+                    });
+                } else {
                     window.location.href = "{{ route('user.account') }}";
                     return false;
                 }
-
-                $.ajax({
-                    url: "{{ route('wishlist.add') }}",
-                    type: "POST",
-                    data: {
-                        product_id: productId
-                    },
-                    headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                            "content") // Fetch CSRF token
-                    },
-                    success: function(response) {
-                        alert(response.message);
-                    },
-                    error: function(xhr) {
-                        alert("Error.");
-                    }
-                });
             });
 
             $(document).on('click', '.shop-category ul li a', function() {
