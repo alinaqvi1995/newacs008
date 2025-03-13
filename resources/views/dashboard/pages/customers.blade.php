@@ -178,12 +178,12 @@
                                                 <th>Joining Date</th>
                                                 <td class="overview-date">20 Feb, 2023</td>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <th>Status</th>
                                                 <td class="overview-status"><span
                                                         class="badge bg-danger-subtle text-danger">Block</span>
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
                                         </tbody>
                                     </table>
                                 </div>
