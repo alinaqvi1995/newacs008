@@ -28,20 +28,6 @@
                                     <div class="flex-grow-1">
                                         <h3 class="card-title mb-0">Customers List</h3>
                                     </div>
-                                    {{-- <div>
-                                        <div class="d-flex flex-wrap gap-2">
-                                            <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal"
-                                                data-bs-target="#showModal"><i
-                                                    class="bi bi-plus-circle align-baseline me-1"></i> Add
-                                                Customer</button>
-                                            <button type="button" class="btn btn-secondary"><i
-                                                    class="ph-cloud-arrow-down align-middle me-1"></i>
-                                                Import</button>
-                                            <button type="button" class="btn btn-subtle-info"><i
-                                                    class="ph-cloud-arrow-up align-middle me-1"></i>
-                                                Export</button>
-                                        </div>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -50,39 +36,6 @@
 
                 <div class="row" id="customer-list">
                     <div class="col-xxl-8">
-                        {{-- <div class="card">
-                            <div class="card-body">
-                                <div class="row gy-3">
-                                    <div class="col-xl-4">
-                                        <div class="search-box">
-                                            <input type="text" class="form-control search"
-                                                placeholder="Search customer, email etc...">
-                                            <i class="ri-search-line search-icon"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-4">
-                                        <div>
-                                            <select class="form-control" id="idStatus" data-choices
-                                                data-choices-search-false>
-                                                <option value="all">All Select</option>
-                                                <option value="Active">Active</option>
-                                                <option value="Unactive">Unactive</option>
-                                                <option value="Block">Block</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-4">
-                                        <input type="text" class="form-control" id="datepicker-range"
-                                            data-provider="flatpickr" data-date-format="d M, Y" data-range-date="true"
-                                            placeholder="Select date">
-                                    </div>
-                                    <div class="col-xl-2 col-md-4">
-                                        <button class="btn btn-subtle-primary w-100" onclick="filterData();"><i
-                                                class="bi bi-funnel align-baseline me-1"></i> Filter</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end card--> --}}
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive table-card">
@@ -90,6 +43,7 @@
                                         <tbody class="list">
                                             @foreach ($customers as $key => $row)
                                                 <tr>
+                                                    <input type="hidden" name="id" value="{{ $row->id }}">
                                                     <td class="id d-none"><a href="javascript:void(0);"
                                                             class="fw-medium link-primary">{{ $key + 1 }}</a></td>
                                                     <td class="customer">
@@ -233,10 +187,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                {{-- <div class="mt-4">
-                                    <label class="form-label fs-md">Private Notes</label>
-                                    <div class="private-notes"></div>
-                                </div> --}}
                             </div>
                             <div class="card-body px-0 pt-0">
                                 <h6 class="fs-md px-4 mb-3">Order History</h6>
@@ -296,6 +246,73 @@
                 var customerName = row.find(".customer-name-elem").text();
                 var customerEmail = row.find(".email").text();
                 var customerImage = row.find(".customer-image-elem").attr("src");
+                var customerId = row.find(".id").text(); // Assuming ID is stored here
+
+                // Update the right-side card
+                $(".overview-name").text(customerName);
+                $(".overview-email").text(customerEmail);
+                $(".overview-img").attr("src", customerImage);
+
+                // Fetch order history dynamically using AJAX
+                $.ajax({
+                    url: "{{ route('customer.orders', ':id') }}".replace(':id', customerId),
+                    method: "GET",
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.success) {
+                            var ordersHtml = "";
+                            $.each(response.orders, function(index, order) {
+                                ordersHtml += `
+                            <div class="p-2 border border-dashed">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <div class="avatar-title bg-light rounded">
+                                            <img src="${order.image}" alt="" class="avatar-xs">
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <a href="#!">
+                                            <h6 class="fs-md mb-2">${order.product_name}</h6>
+                                        </a>
+                                        <ul class="hstack list-unstyled gap-2 mb-0 fs-sm fw-medium text-muted">
+                                            <li>
+                                                <i class="ph-star align-baseline"></i> ${order.rating}
+                                            </li>
+                                            <li>
+                                                <i class="ph-shopping-cart align-baseline"></i> ${order.total_purchases}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="text-end">
+                                        <h5 class="fs-md text-primary mb-0">RS ${order.price}</h5>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <button class="btn btn-secondary btn-icon btn-sm"><i
+                                                class="ph-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                            });
+
+                            // Update order history
+                            $(".vstack").html(ordersHtml);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    {{-- <script>
+        $(document).ready(function() {
+            $(".view-item-btn").on("click", function() {
+                // Find the closest table row
+                var row = $(this).closest("tr");
+
+                // Get customer details from the row
+                var customerName = row.find(".customer-name-elem").text();
+                var customerEmail = row.find(".email").text();
+                var customerImage = row.find(".customer-image-elem").attr("src");
 
                 // Update the right-side card
                 $(".overview-name").text(customerName);
@@ -303,5 +320,5 @@
                 $(".overview-img").attr("src", customerImage);
             });
         });
-    </script>
+    </script> --}}
 @endsection

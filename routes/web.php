@@ -77,4 +77,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/customers', [DashboardController::class, 'customers'])->name('all.customers');
 
     Route::get('/wishlists', [DashboardController::class, 'wishlist'])->name('all.wishlists');
+
+    Route::get('/customer-orders/{id}', [DashboardController::class, 'getCustomerOrders'])->name('customer.orders');
 });

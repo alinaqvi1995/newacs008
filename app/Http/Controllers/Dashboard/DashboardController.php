@@ -41,7 +41,29 @@ class DashboardController extends Controller
 
     public static function customers()
     {
-        $customers = User::where('role', 'customer')->get();
+        $customers = User::with('orders')->where('role', 'customer')->get();
         return view('dashboard.pages.customers', compact('customers'));
     }
+
+    public function getCustomerOrders($id)
+    {
+        $orders = Order::where('customer_id', $id)
+            ->with('product')
+            ->get()
+            ->map(function ($order) {
+                return [
+                    'product_name' => $order->product->name,
+                    'image' => asset($order->product->image),
+                    'price' => $order->price,
+                    'rating' => $order->rating,
+                    'total_purchases' => $order->total_purchases,
+                ];
+            });
+
+        return response()->json([
+            'success' => true,
+            'orders' => $orders,
+        ]);
+    }
+
 }
