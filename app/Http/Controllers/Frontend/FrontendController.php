@@ -21,6 +21,10 @@ class FrontendController extends Controller
     {
         return view('frontend.pages.user-account.index');
     }
+    public function contactUs()
+    {
+        return view('frontend.pages.contact');
+    }
     public function wishlist()
     {
         $wishlists = Wishlist::where('user_id', auth()->id())->with('product')->get();

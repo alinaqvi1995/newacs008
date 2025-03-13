@@ -45,8 +45,7 @@
                         <div class="footer-widget__title-box">
                             <h3 class="footer-widget__title">Contact</h3>
                         </div>
-                        <p class="footer-widget__contact-text">Valentin, Street Road 24, New York,
-                            USA - 67452</p>
+                        <p class="footer-widget__contact-text">803, Park Avenue, P.E.C.H.S Block-6</p>
                         <ul class="list-unstyled footer-widget__contact-list">
                             <li>
                                 <div class="text">

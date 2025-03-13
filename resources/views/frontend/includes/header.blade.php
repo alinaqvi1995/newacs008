@@ -69,7 +69,7 @@
                                                 <a href="{{ route('frontend.wishlist') }}">Wishlist</a>
                                             </li>
                                             <li>
-                                                <a href="#">Contact</a>
+                                                <a href="{{ route('pages.contact') }}">Contact</a>
                                             </li>
                                         </ul>
                                     </div>
