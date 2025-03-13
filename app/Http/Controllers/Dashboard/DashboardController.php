@@ -25,7 +25,7 @@ class DashboardController extends Controller
     {
         $products = Product::all();
         $ordersTotal = Order::all();
-        $orders = Order::with('user', 'orderItems.product')->latest()->take(5);
+        $orders = Order::with('user', 'orderItems.product')->latest()->get()->take(5);
 
         $totalSale = Order::with('orderItems')->get()->sum(function ($order) {
             return $order->orderItems->sum(function ($item) {
