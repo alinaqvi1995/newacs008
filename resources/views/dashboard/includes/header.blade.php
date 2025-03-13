@@ -92,6 +92,10 @@
                             data-key="t-calendar">Products</span> </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('orders') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
+                            data-key="t-calendar">Orders</span> </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('all.subscribers') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
                             data-key="t-calendar">Subscribers</span> </a>
                 </li>
@@ -101,7 +105,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('all.customers') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
-                            data-key="t-calendar">customers</span> </a>
+                            data-key="t-calendar">Customers</span> </a>
                 </li>
                 {{-- <li class="nav-item">
                     <a href="{{ route('tags.index') }}" class="nav-link menu-link"> <i class="bx bx-tag"></i> <span

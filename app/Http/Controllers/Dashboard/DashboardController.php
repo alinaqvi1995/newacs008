@@ -26,7 +26,8 @@ class DashboardController extends Controller
 
     public static function orders()
     {
-        return view('dashboard.orders.index');
+        $orders = Order::with('user', 'orderItems.product')->latest()->paginate(10);
+        return view('dashboard.orders.index', compact('orders'));
     }
 
     public static function addProduct()
