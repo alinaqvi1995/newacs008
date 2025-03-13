@@ -31,6 +31,7 @@
                                         <table class="table table-custom align-middle table-borderless table-nowrap">
                                             <thead>
                                                 <tr>
+                                                    <th>Sr #</th>
                                                     <th>User</th>
                                                     <th>Product</th>
                                                     <th>Image</th>
@@ -41,7 +42,7 @@
                                             <tbody>
                                                 @foreach ($wishlists as $key => $wishlist)
                                                     <tr>
-                                                        <td>{{ $key++ }}</td>
+                                                        <td>{{ $key + 1 }}</td>
                                                         <td>{{ $wishlist->user->name ?? 'N/A' }}</td>
                                                         <td>{{ $wishlist->product->name ?? 'N/A' }}</td>
                                                         <td>
