@@ -40,9 +40,6 @@ Route::get('/products', [FrontendController::class, 'products'])->name('frontend
 Route::get('/products/detail/{slug}', [FrontendController::class, 'productsdetail'])->name('frontend.products.detail');
 Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('frontend.wishlist');
 
-Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');
-Route::get('/add-product', [DashboardController::class, 'addProduct'])->name('addProduct');
-
 // cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->middleware('auth')->name('cart.add');
@@ -60,6 +57,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/orders', [DashboardController::class, 'orders'])->name('orders');
+    Route::get('/add-product', [DashboardController::class, 'addProduct'])->name('addProduct');
     
     Route::resource('categories', CategoryController::class);
     Route::resource('brands', BrandController::class);
@@ -69,7 +69,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     Route::get('/subscribers', [SubscriberController::class, 'index'])->name('all.subscribers');
 
-    Route::get('/customers', [SubscriberController::class, 'customers'])->name('all.customers');
+    Route::get('/customers', [DashboardController::class, 'customers'])->name('all.customers');
 
-    Route::get('/wishlists', [SubscriberController::class, 'wishlist'])->name('all.wishlists');
+    Route::get('/wishlists', [DashboardController::class, 'wishlist'])->name('all.wishlists');
 });
