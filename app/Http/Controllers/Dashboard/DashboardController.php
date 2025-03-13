@@ -48,7 +48,7 @@ class DashboardController extends Controller
 
     public function getCustomerOrders($id)
     {
-        $orders = Order::where('customer_id', $id)
+        $orders = Order::where('user_id', $id)
             ->with('product')
             ->get()
             ->map(function ($order) {
