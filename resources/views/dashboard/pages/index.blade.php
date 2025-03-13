@@ -105,28 +105,46 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr #.</th>
-                                                    <th>Product</th>
-                                                    <th>Price</th> <!-- Single product price in format 00.00 -->
-                                                    <th>Quantity</th>
-                                                    <th>Subtotal</th>
+                                                    <th>Products</th>
+                                                    <th>Prices</th> <!-- Single product prices in format 00.00 -->
+                                                    <th>Quantities</th>
+                                                    <th>Subtotals</th>
                                                     <!-- Single product price * quantity in format 00.00 -->
+                                                    <th>Total Price</th> <!-- Order total -->
                                                     <th>User</th>
                                                     <th>Created At</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list form-check-all">
                                                 @foreach ($orders as $key => $order)
-                                                    @foreach ($order->orderItems as $item)
-                                                        <tr>
-                                                            <td>{{ $loop->parent->index + 1 }}</td>
-                                                            <td>{{ $item->product->name ?? 'Unknown Product' }}</td>
-                                                            <td>${{ number_format($item->price, 2) }}</td>
-                                                            <td>{{ $item->quantity }}</td>
-                                                            <td>${{ number_format($item->price * $item->quantity, 2) }}</td>
-                                                            <td>{{ $order->user->name ?? 'Guest' }}</td>
-                                                            <td>{{ $order->created_at->format('d M Y') }}</td>
-                                                        </tr>
-                                                    @endforeach
+                                                    <tr>
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td>
+                                                            @foreach ($order->orderItems as $item)
+                                                                <div>{{ $item->product->name ?? 'Unknown Product' }}</div>
+                                                            @endforeach
+                                                        </td>
+                                                        <td>
+                                                            @foreach ($order->orderItems as $item)
+                                                                <div>${{ number_format($item->price, 2) }}</div>
+                                                            @endforeach
+                                                        </td>
+                                                        <td>
+                                                            @foreach ($order->orderItems as $item)
+                                                                <div>{{ $item->quantity }}</div>
+                                                            @endforeach
+                                                        </td>
+                                                        <td>
+                                                            @foreach ($order->orderItems as $item)
+                                                                <div>${{ number_format($item->price * $item->quantity, 2) }}
+                                                                </div>
+                                                            @endforeach
+                                                        </td>
+                                                        <td>${{ number_format($order->orderItems->sum(fn($item) => $item->price * $item->quantity), 2) }}
+                                                        </td>
+                                                        <td>{{ $order->user->name ?? 'Guest' }}</td>
+                                                        <td>{{ $order->created_at->format('d M Y') }}</td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -142,8 +160,8 @@
                                             </div>
                                             <h5 class="mt-2">Sorry! No Result Found</h5>
                                             <p class="text-muted mb-0">
-                                                We've searched more than 150+ products but did not find any orders matching
-                                                your criteria.
+                                                We've searched more than 150+ orders but did not find any matching your
+                                                criteria.
                                             </p>
                                         </div>
                                     </div>
@@ -164,6 +182,7 @@
                                     </div>
                                     <!-- end pagination-element -->
                                 </div>
+
                             </div>
                             <!--end card-->
                         </div>
