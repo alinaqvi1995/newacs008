@@ -227,25 +227,18 @@
             $(".cart-page__buttons-2 .thm-btn").click(function(e) {
                 e.preventDefault();
 
-                let cartItems = [];
-                $(".cart-table tbody tr").each(function() {
-                    cartItems.push({
-                        id: $(this).data("id"),
-                        quantity: $(this).find(".product-qty").val()
-                    });
-                });
+                let userId = "{{ auth()->id() }}";
 
                 $.ajax({
                     url: "{{ route('place.order') }}",
                     type: "POST",
                     data: {
                         _token: "{{ csrf_token() }}",
-                        cartItems: cartItems
+                        user_id: userId
                     },
                     success: function(response) {
                         if (response.success) {
-                            window.location.href =
-                            "{{ route('my.cart') }}";
+                            window.location.href = "{{ route('my.cart') }}";
                         } else {
                             alert(response.message);
                         }

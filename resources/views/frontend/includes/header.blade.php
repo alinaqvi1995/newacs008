@@ -3,7 +3,8 @@
         <div class="container">
             <div class="main-header-three__wrapper-inner clearfix">
                 <div class="main-header-three__logo">
-                    <a href="{{ route('index') }}"><img src="https://indigoshopify.com/assets/img/logo.png" alt=""></a>
+                    <a href="{{ route('index') }}"><img src="https://indigoshopify.com/assets/img/logo.png"
+                            alt=""></a>
                 </div>
                 <div class="main-header-three__right">
                     <div class="main-header-three__top">
@@ -55,7 +56,9 @@
                                                 <a href="{{ route('frontend.products') }}">All Categories</a>
                                                 <ul class="sub-menu">
                                                     @foreach ($categories as $item)
-                                                    <li><a href="{{ route('frontend.products', ['category' => $item->id]) }}"> {{ $item->name }}</a></li>
+                                                        <li><a
+                                                                href="{{ route('frontend.products', ['category' => $item->id]) }}">
+                                                                {{ $item->name }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             </li>
@@ -97,13 +100,20 @@
                                                 </ul>
                                             </div>
                                         @endauth
-                                    
+
                                         <div class="main-menu-three__search-cart-box">
                                             <div class="main-menu-three__search-box">
-                                                <a href="#" class="main-menu-three__search search-toggler icon-magnifying-glass"></a>
+                                                <a href="#"
+                                                    class="main-menu-three__search search-toggler icon-magnifying-glass"></a>
                                             </div>
                                             <div class="main-menu-three__cart-box">
-                                                <a href="{{ route('my.cart') }}" class="main-menu-three__cart icon-shopping-cart"></a>
+                                                @auth
+                                                    <a href="{{ route('my.cart') }}"
+                                                        class="main-menu-three__cart icon-shopping-cart"></a>
+                                                @else`
+                                                    <a href="{{ route('user.account') }}"
+                                                        class="main-menu-three__cart icon-shopping-cart"></a>
+                                                @endauth
                                             </div>
                                         </div>
                                     </div>
