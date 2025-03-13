@@ -68,4 +68,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::resource('products', ProductController::class);
 
     Route::get('/subscribers', [SubscriberController::class, 'index'])->name('all.subscribers');
+
+    Route::get('/customers', [SubscriberController::class, 'customers'])->name('all.customers');
+
+    Route::get('/wishlists', [SubscriberController::class, 'wishlist'])->name('all.wishlists');
 });

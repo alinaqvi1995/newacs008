@@ -96,8 +96,12 @@
                             data-key="t-calendar">Subscribers</span> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('all.subscribers') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
+                    <a href="{{ route('all.wishlists') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
                             data-key="t-calendar">Wishlists</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('all.customers') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
+                            data-key="t-calendar">customers</span> </a>
                 </li>
                 {{-- <li class="nav-item">
                     <a href="{{ route('tags.index') }}" class="nav-link menu-link"> <i class="bx bx-tag"></i> <span
