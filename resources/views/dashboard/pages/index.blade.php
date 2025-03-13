@@ -53,7 +53,7 @@
                                     <p class="text-muted">Total Stock</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            $<span class="counter-value" data-target="218.36">0</span>k
+                                            $<span class="counter-value" data-target="{{ number_format($totalStockValue, 2) }}">0</span>k
                                         </h4>
                                         <p class="mb-0 text-muted">
                                             <span class="flex-shrink-0 badge bg-danger-subtle text-danger rounded-pill"><i
@@ -65,10 +65,10 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="product-card-hrid-border">
-                                    <p class="text-muted">Net Profit</p>
+                                    <p class="text-muted">Total Sale</p>
                                     <div class="d-flex align-items-center gap-2">
                                         <h4 class="mb-0">
-                                            $<span class="counter-value" data-target="564.95">0</span>M
+                                            $<span class="counter-value" data-target="{{ number_format($totalSale, 2) }}">0</span>M
                                         </h4>
                                         <p class="mb-0 text-muted">
                                             <span class="flex-shrink-0 badge bg-success-subtle text-success rounded-pill"><i
@@ -106,11 +106,10 @@
                                                 <tr>
                                                     <th>Sr #.</th>
                                                     <th>Products</th>
-                                                    <th>Prices</th> <!-- Single product prices in format 00.00 -->
+                                                    <th>Prices</th>
                                                     <th>Quantities</th>
                                                     <th>Subtotals</th>
-                                                    <!-- Single product price * quantity in format 00.00 -->
-                                                    <th>Total Price</th> <!-- Order total -->
+                                                    <th>Total Price</th>
                                                     <th>User</th>
                                                     <th>Created At</th>
                                                 </tr>
@@ -150,37 +149,6 @@
                                         </table>
                                     </div>
                                     <!--end table-responsive-->
-
-                                    <div class="noresult" style="display: none">
-                                        <div class="text-center py-4">
-                                            <div class="avatar-md mx-auto mb-4">
-                                                <div class="avatar-title bg-light text-primary rounded-circle fs-4xl">
-                                                    <i class="bi bi-search"></i>
-                                                </div>
-                                            </div>
-                                            <h5 class="mt-2">Sorry! No Result Found</h5>
-                                            <p class="text-muted mb-0">
-                                                We've searched more than 150+ orders but did not find any matching your
-                                                criteria.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- end noresult -->
-
-                                    <div class="row mb-4 align-items-center" id="pagination-element">
-                                        <div class="col-sm">
-                                            <div class="text-muted text-center text-sm-start">
-                                                Showing <span class="fw-semibold">{{ $orders->count() }}</span> of
-                                                <span class="fw-semibold">{{ $orders->total() }}</span> Results
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-auto mt-3 mt-sm-0">
-                                            <div class="pagination-wrap hstack gap-2 justify-content-center">
-                                                {{ $orders->links() }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end pagination-element -->
                                 </div>
 
                             </div>

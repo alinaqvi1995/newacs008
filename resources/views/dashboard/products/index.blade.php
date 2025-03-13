@@ -20,67 +20,6 @@
                     </div>
                 </div>
                 <!-- end page title -->
-                <div class="card product-card-grid-menu">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="product-card-hrid-border">
-                                    <p class="text-muted">Total Products</p>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <h4 class="mb-0">
-                                            <span class="counter-value">{{ count($products) }}</span>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-card-hrid-border">
-                                    <p class="text-muted">Total Orders</p>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <h4 class="mb-0">
-                                            <span class="counter-value" data-target="7115">0</span>
-                                        </h4>
-                                        <p class="mb-0 text-muted">
-                                            <span class="flex-shrink-0 badge bg-success-subtle text-success rounded-pill"><i
-                                                    class="ph ph-trend-up align-middle me-1"></i>
-                                                1.5%</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-card-hrid-border">
-                                    <p class="text-muted">Total Stock</p>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <h4 class="mb-0">
-                                            $<span class="counter-value" data-target="218.36">0</span>k
-                                        </h4>
-                                        <p class="mb-0 text-muted">
-                                            <span class="flex-shrink-0 badge bg-danger-subtle text-danger rounded-pill"><i
-                                                    class="ph ph-trend-up align-middle me-1"></i>
-                                                0.8%</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-card-hrid-border">
-                                    <p class="text-muted">Net Profit</p>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <h4 class="mb-0">
-                                            $<span class="counter-value" data-target="564.95">0</span>M
-                                        </h4>
-                                        <p class="mb-0 text-muted">
-                                            <span class="flex-shrink-0 badge bg-success-subtle text-success rounded-pill"><i
-                                                    class="ph ph-trend-up align-middle me-1"></i>
-                                                2.4%</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div id="productList">
                     {{-- <div class="row">
