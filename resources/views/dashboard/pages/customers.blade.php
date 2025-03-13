@@ -296,7 +296,7 @@
                             });
 
                             // Update order history
-                            $(".order-count").html(response.orders.length);
+                            $(".order-count").html('(' + response.orders.length + ')');
                             $(".vstack").html(ordersHtml);
                         }
                     }
