@@ -148,6 +148,8 @@
                                                             <select name="status" id="status" class="form-select">
                                                                 <option value="confirmed" class="text-success">✅ Confirmed
                                                                 </option>
+                                                                <option value="completed" class="text-success">✅ Completed
+                                                                </option>
                                                                 <option value="pending" class="text-warning">⏳ Pending
                                                                 </option>
                                                                 <option value="shipped" class="text-primary">🚚 Shipped

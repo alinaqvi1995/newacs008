@@ -51,12 +51,12 @@ class OrderController extends Controller
     {
         $request->validate([
             'order_id' => 'required|exists:orders,id',
-            'status' => 'required|in:confirmed,pending,shipped,delivered,canceled',
+            'status' => 'required|in:confirmed,pending,shipped,delivered,canceled,completed',
         ]);
 
         $order = Order::findOrFail($request->order_id);
 
-        if ($request->status === 'confirmed') {
+        if ($request->status === 'completed') {
             // Reduce product quantity
             foreach ($order->orderItems as $item) {
                 $product = Product::find($item->product_id);
@@ -67,7 +67,7 @@ class OrderController extends Controller
                     return response()->json(['message' => 'Insufficient stock for ' . $product->name], 400);
                 }
             }
-        } elseif ($order->status === 'confirmed' && $request->status === 'canceled') {
+        } elseif ($order->status === 'completed' && $request->status === 'canceled') {
             // Restock product if order is canceled after confirmation
             foreach ($order->orderItems as $item) {
                 $product = Product::find($item->product_id);
@@ -89,8 +89,8 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        // If order was confirmed, restock products before deleting
-        if ($order->status === 'confirmed') {
+        // If order was completed, restock products before deleting
+        if ($order->status === 'completed') {
             foreach ($order->orderItems as $item) {
                 $product = Product::find($item->product_id);
                 if ($product) {
