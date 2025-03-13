@@ -53,6 +53,7 @@
                                                     <th>User</th>
                                                     <th>Created At</th>
                                                     <th>Status</th>
+                                                    <th>Action</th> <!-- Added Action Column -->
                                                 </tr>
                                             </thead>
                                             <tbody class="list form-check-all">
@@ -90,10 +91,83 @@
                                                         <td>{{ $order->user->name ?? 'Guest' }}</td>
                                                         <td>{{ $order->created_at->format('d M Y') }}</td>
                                                         <td>{{ $order->status }}</td>
+                                                        <td>
+                                                            <!-- Dropdown -->
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-link text-muted p-0" type="button"
+                                                                    data-bs-toggle="dropdown">
+                                                                    <i class="ph ph-dots-three-vertical"></i>
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li>
+                                                                        <button class="dropdown-item" data-bs-toggle="modal"
+                                                                            data-bs-target="#statusModal"
+                                                                            onclick="setOrderId({{ $order->id }})">
+                                                                            <i class="ph ph-pencil-simple me-2"></i> Change
+                                                                            Status
+                                                                        </button>
+                                                                    </li>
+                                                                    <li>
+                                                                        <form
+                                                                            action="{{ route('orders.destroy', $order->id) }}"
+                                                                            method="POST"
+                                                                            onsubmit="return confirm('Are you sure?')">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit"
+                                                                                class="dropdown-item text-danger">
+                                                                                <i class="ph ph-trash me-2"></i> Delete
+                                                                            </button>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
+
+                                        <!-- Change Status Modal -->
+                                        <div class="modal fade" id="statusModal" tabindex="-1"
+                                            aria-labelledby="statusModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="statusModalLabel">Change Order Status
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <form id="statusForm" action="{{ route('orders.updateStatus') }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <input type="hidden" name="order_id" id="order_id">
+                                                            <label for="status" class="form-label">Select Status</label>
+                                                            <select name="status" id="status" class="form-select">
+                                                                <option value="confirmed" class="text-success">✅ Confirmed
+                                                                </option>
+                                                                <option value="pending" class="text-warning">⏳ Pending
+                                                                </option>
+                                                                <option value="shipped" class="text-primary">🚚 Shipped
+                                                                </option>
+                                                                <option value="delivered" class="text-info">📦 Delivered
+                                                                </option>
+                                                                <option value="canceled" class="text-danger">❌ Canceled
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Update
+                                                                Status</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!--end table-responsive-->
 
@@ -157,4 +231,11 @@
             </div>
         </footer>
     </div>
+@endsection
+@section('extra_script')
+    <script>
+        function setOrderId(orderId) {
+            document.getElementById('order_id').value = orderId;
+        }
+    </script>
 @endsection
