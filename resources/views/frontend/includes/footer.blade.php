@@ -1,7 +1,7 @@
 <footer class="site-footer">
-    <div class="site-footer__bg" style="background-image: url(assets/images/backgrounds/site-footer-bg-img.png);"></div>
+    <div class="site-footer__bg" style="background-image: url(frontend/assets/images/backgrounds/site-footer-bg-img.png);"></div>
     <div class="site-footer__ripped-paper"
-        style="background-image: url(assets/images/shapes/site-footer-ripped-paper.png);"></div>
+        style="background-image: url(frontend/assets/images/shapes/site-footer-ripped-paper.png);"></div>
     <div class="container">
         <div class="site-footer__top">
             <div class="row">
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
                     <div class="footer-widget__column footer-widget__explore">
                         <div class="footer-widget__title-box">
                             <h3 class="footer-widget__title">Explore</h3>
@@ -40,13 +40,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
                     <div class="footer-widget__column footer-widget__contact">
                         <div class="footer-widget__title-box">
                             <h3 class="footer-widget__title">Contact</h3>
                         </div>
-                        <p class="footer-widget__contact-text">Valentin, Street Road 24, New York,
-                            USA - 67452</p>
+                        <p class="footer-widget__contact-text">803, Park Avenue, P.E.C.H.S Block-6</p>
                         <ul class="list-unstyled footer-widget__contact-list">
                             <li>
                                 <div class="text">
@@ -61,7 +60,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                {{-- <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
                     <div class="footer-widget__column footer-widget__gallery">
                         <div class="footer-widget__title-box">
                             <h3 class="footer-widget__title">Gallery</h3>
@@ -105,7 +104,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -115,16 +114,16 @@
                 <div class="col-xl-12">
                     <div class="site-footer__bottom-inner">
                         <div class="site-footer__bottom-left">
-                            <p class="site-footer__bottom-text">© Copyright 2023 by <a href="#">Company.com</a>
+                            <p class="site-footer__bottom-text">© Copyright 2025 by <a href="/">Company.com</a>
                             </p>
                         </div>
                         <div class="site-footer__bottom-right">
                             <ul class="list-unstyled site-footer__bottom-menu">
-                                <li><a href="about.html">Terms & Conditions</a></li>
+                                {{-- <li><a href="about.html">Terms & Conditions</a></li>
                                 <li><span>/</span></li>
                                 <li><a href="about.html">Privacy Policy</a></li>
                                 <li><span>/</span></li>
-                                <li><a href="about.html">Privacy Policy</a></li>
+                                <li><a href="about.html">Privacy Policy</a></li> --}}
                             </ul>
                         </div>
                     </div>

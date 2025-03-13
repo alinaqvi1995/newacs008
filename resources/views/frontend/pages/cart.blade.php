@@ -138,7 +138,7 @@
 
     </section>
     <!--End Cart Page-->
-
+    @include('frontend.partials.subscribe')
 @endsection
 
 @section('script')

@@ -69,7 +69,7 @@
                                                 <a href="{{ route('frontend.wishlist') }}">Wishlist</a>
                                             </li>
                                             <li>
-                                                <a href="#">Contact</a>
+                                                <a href="{{ route('pages.contact') }}">Contact</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -110,7 +110,7 @@
                                                 @auth
                                                     <a href="{{ route('my.cart') }}"
                                                         class="main-menu-three__cart icon-shopping-cart"></a>
-                                                @else`
+                                                @else
                                                     <a href="{{ route('user.account') }}"
                                                         class="main-menu-three__cart icon-shopping-cart"></a>
                                                 @endauth
