@@ -34,10 +34,10 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link collapsed" href="#sidebarEcommerce" data-bs-toggle="collapse"
                         role="button" aria-expanded="false" aria-controls="sidebarEcommerce">
-                        <i class="bx bx-cart-alt"></i> <span data-key="t-ecommerce">My Store</span>
+                        <i class="bx bx-cart-alt"></i> <span data-key="t-ecommerce">My Storess</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarEcommerce">
                         <ul class="nav nav-sm flex-column">
@@ -49,10 +49,6 @@
                                 <a href="{{ route('products.index') }}" class="nav-link" data-key="t-products"> Products
                                 </a>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a href="apps-ecommerce-product-details.html" class="nav-link"
-                                    data-key="t-product-overview"> Product Overview </a>
-                            </li> --}}
                             <li class="nav-item">
                                 <a href="{{ route('products.create') }}" class="nav-link" data-key="t-add-product"> Add
                                     Product </a>
@@ -74,6 +70,10 @@
                             </li>
                         </ul>
                     </div>
+                </li> --}}
+                <li class="nav-item">
+                    <a href="{{ route('dashboard') }}" class="nav-link menu-link"> <i class="bx bx-category"></i>
+                        <span data-key="t-calendar">Dashboard</span> </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('categories.index') }}" class="nav-link menu-link"> <i class="bx bx-category"></i>
@@ -86,6 +86,10 @@
                 <li class="nav-item">
                     <a href="{{ route('brands.index') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
                             data-key="t-calendar">Brands</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('products.index') }}" class="nav-link menu-link"> <i class="bx bx-store"></i> <span
+                            data-key="t-calendar">Products</span> </a>
                 </li>
                 {{-- <li class="nav-item">
                     <a href="{{ route('tags.index') }}" class="nav-link menu-link"> <i class="bx bx-tag"></i> <span
