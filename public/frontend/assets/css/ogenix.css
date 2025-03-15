@@ -11306,7 +11306,7 @@ ul {
 
 .product__price-ranger {
   position: relative;
-  padding: 27px 30px 30px;
+  padding: 27px 15px 30px;
   margin: 0;
   background-color: var(--ogenix-extra);
   border-radius: var(--ogenix-bdr-radius);
@@ -11418,7 +11418,7 @@ ul {
   color: var(--ogenix-gray);
   font-size: 14px;
   font-weight: 500;
-  width: 40px;
+  width: 55px;
   line-height: 30px;
   border: none;
   padding: 0;
