@@ -3,7 +3,7 @@
 @section('content')
     <!--Page Header Start-->
     <section class="page-header">
-        <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/page-header-bg.jpg)">
+        <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/new-header-01.jpeg)">
         </div>
         <div class="page-header__ripped-paper"
             style="background-image: url(frontend/assets/images/shapes/page-header-ripped-paper.png);"></div>

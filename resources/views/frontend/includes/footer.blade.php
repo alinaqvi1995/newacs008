@@ -49,7 +49,7 @@
                         <ul class="list-unstyled footer-widget__contact-list">
                             <li>
                                 <div class="text">
-                                    <p><a href="tel:92309532000">+92 (309) 53 - 2000</a></p>
+                                    <p><a href="tel:923095320000">+92 (309) 53 - 20000</a></p>
                                 </div>
                             </li>
                             <li>
