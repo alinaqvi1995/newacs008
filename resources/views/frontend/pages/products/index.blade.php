@@ -214,20 +214,22 @@
                 url: "{{ route('frontend.products') }}?page=" + page,
                 type: "GET",
                 success: function(data) {
-                    $('#product-list').html(data);
+                    $("#product__all").html($(data).find("#product__all").html());
+                    $("#pagination").html($(data).find("#pagination").html());
+
+                    // Extract pagination data
+                    let firstItem = $(data).find(".product__showing-text").attr("data-first-item");
+                    let lastItem = $(data).find(".product__showing-text").attr("data-last-item");
+                    let totalItems = $(data).find(".product__showing-text").attr("data-total-items");
+
+                    updateShowingText(firstItem, lastItem, totalItems);
                 }
             });
-
-            function updateShowingText(currentPage, perPage, totalItems) {
-                let start = (currentPage - 1) * perPage + 1;
-                let end = Math.min(start + perPage - 1, totalItems);
-
-                document.querySelector('.product__showing-text').innerText =
-                    `Showing ${start}–${end} of ${totalItems} Results`;
-            }
-
-            // Example usage
-            updateShowingText(1, 9, 12); // Adjust values dynamically
         });
+
+        // Function to update the showing text dynamically
+        function updateShowingText(firstItem, lastItem, totalItems) {
+            $(".product__showing-text").text(`Showing ${firstItem}–${lastItem} of ${totalItems} Results`);
+        }
     </script>
 @endsection
