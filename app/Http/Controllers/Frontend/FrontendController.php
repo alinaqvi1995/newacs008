@@ -31,6 +31,7 @@ class FrontendController extends Controller
         return view('frontend.pages.wishlist', compact('wishlists'));
         // return view('frontend.pages.wishlist');
     }
+
     public function products(Request $request)
     {
         $query = Product::query();
@@ -50,9 +51,7 @@ class FrontendController extends Controller
 
         // Apply category filter
         if ($request->filled('category')) {
-            $query->whereHas('category', function ($q) use ($request) {
-                $q->where('id', $request->category);
-            });
+            $query->where('category_id', $request->category);
         }
 
         // Apply sorting
@@ -62,27 +61,77 @@ class FrontendController extends Controller
             } elseif ($request->sort_by == 'price_high_low') {
                 $query->orderBy('price', 'desc');
             } else {
-                $query->latest(); // Default to latest products
+                $query->latest();
             }
-        } else {
-            $query->latest();
         }
 
-        $products = $query->paginate(9);
-        // $products = $query->paginate(9);
-        $categories = Category::where('status', 1)->withCount('products')->get();
-        $totalProducts = Product::where('status', 1)
-            ->where('visibility', 1)
-            ->get();
-
-        // dd($products->toArray());
+        $products = $query->paginate(10); // Adjust per page as needed
 
         if ($request->ajax()) {
-            return view('frontend.partials.product_list', compact('products'));
-        } else {
-            return view('frontend.pages.products.index', compact('products', 'categories', 'totalProducts'));
+            return response()->json([
+                'html' => view('frontend.partials.product_list', compact('products'))->render(),
+                'pagination' => $products->links()->toHtml(),
+                'firstItem' => $products->firstItem(),
+                'lastItem' => $products->lastItem(),
+                'total' => $products->total()
+            ]);
         }
+
+        return view('frontend.products', compact('products'));
     }
+
+    // public function products(Request $request)
+    // {
+    //     $query = Product::query();
+
+    //     // Apply search filter
+    //     if ($request->filled('search')) {
+    //         $query->where('name', 'like', '%' . $request->search . '%');
+    //     }
+
+    //     // Apply price range filter
+    //     if ($request->filled('min_price')) {
+    //         $query->where('price', '>=', $request->min_price);
+    //     }
+    //     if ($request->filled('max_price')) {
+    //         $query->where('price', '<=', $request->max_price);
+    //     }
+
+    //     // Apply category filter
+    //     if ($request->filled('category')) {
+    //         $query->whereHas('category', function ($q) use ($request) {
+    //             $q->where('id', $request->category);
+    //         });
+    //     }
+
+    //     // Apply sorting
+    //     if ($request->filled('sort_by')) {
+    //         if ($request->sort_by == 'price_low_high') {
+    //             $query->orderBy('price', 'asc');
+    //         } elseif ($request->sort_by == 'price_high_low') {
+    //             $query->orderBy('price', 'desc');
+    //         } else {
+    //             $query->latest(); // Default to latest products
+    //         }
+    //     } else {
+    //         $query->latest();
+    //     }
+
+    //     $products = $query->paginate(9);
+    //     // $products = $query->paginate(9);
+    //     $categories = Category::where('status', 1)->withCount('products')->get();
+    //     $totalProducts = Product::where('status', 1)
+    //         ->where('visibility', 1)
+    //         ->get();
+
+    //     // dd($products->toArray());
+
+    //     if ($request->ajax()) {
+    //         return view('frontend.partials.product_list', compact('products'));
+    //     } else {
+    //         return view('frontend.pages.products.index', compact('products', 'categories', 'totalProducts'));
+    //     }
+    // }
 
     public function productsdetail($slug)
     {
