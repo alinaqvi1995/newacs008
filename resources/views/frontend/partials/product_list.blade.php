@@ -22,9 +22,12 @@
                                 <p class="product__all-price">RS
                                     {{ number_format($product->price, 2) }}</p>
                                 <div class="product__all-btn-box">
-                                    <a href="cart.html" class="thm-btn product__all-btn">Add
+                                    {{-- <a href="cart.html" class="thm-btn product__all-btn">Add
                                         to
-                                        cart</a>
+                                        cart</a> --}}
+                                        <a href="javascript:void(0);" class="thm-btn product__all-btn product-list__btn add-to-cart" data-id="{{ $product->id }}"
+                                            data-auth="{{ auth()->check() ? '1' : '0' }}">Add
+                                            to cart</a>
                                 </div>
                             </div>
                             <div class="products__all-icon-boxes">
