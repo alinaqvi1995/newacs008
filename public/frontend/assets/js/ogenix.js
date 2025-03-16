@@ -55,22 +55,22 @@
       $(".price-ranger #slider-range").slider({
         range: true,
         min: 50,
-        max: 500,
+        max: 5000,
         values: [11, 300],
         slide: function (event, ui) {
           $(".price-ranger .ranger-min-max-block .min").val(
-            "$" + ui.values[0]
+            "Rs" + ui.values[0]
           );
           $(".price-ranger .ranger-min-max-block .max").val(
-            "$" + ui.values[1]
+            "Rs" + ui.values[1]
           );
         },
       });
       $(".price-ranger .ranger-min-max-block .min").val(
-        "$" + $(".price-ranger #slider-range").slider("values", 0)
+        "Rs" + $(".price-ranger #slider-range").slider("values", 0)
       );
       $(".price-ranger .ranger-min-max-block .max").val(
-        "$" + $(".price-ranger #slider-range").slider("values", 1)
+        "Rs" + $(".price-ranger #slider-range").slider("values", 1)
       );
     }
   }

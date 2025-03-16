@@ -3,7 +3,7 @@
 @section('content')
     <!--Page Header Start-->
     <section class="page-header">
-        <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/page-header-bg.jpg)">
+        <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/new-header-01.jpeg)">
         </div>
         <div class="page-header__ripped-paper"
             style="background-image: url(frontend/assets/images/shapes/page-header-ripped-paper.png);"></div>
@@ -115,11 +115,9 @@
         </div>
     </section>
     <!--Product List End-->
-
     <!--Subscribe One Start-->
     @include('frontend.partials.subscribe')
     <!--Subscribe One End-->
-
 @endsection
 @section('script')
     <script>
@@ -165,40 +163,4 @@
             });
         });
     </script>
-    {{-- <script>
-        $(document).ready(function() {
-            function fetchFilteredData() {
-                let search = $("#search").val();
-                let minPrice = $("#min_price").val();
-                let maxPrice = $("#max_price").val();
-                let category = $(".shop-category ul li a.active").data("category");
-                let sortBy = $("#sort_by").val();
-
-                $.ajax({
-                    url: "{{ route('frontend.products') }}",
-                    method: "GET",
-                    data: {
-                        search: search,
-                        min_price: minPrice,
-                        max_price: maxPrice,
-                        category: category,
-                        sort_by: sortBy
-                    },
-                    success: function(response) {
-                        $("#productListGridTabContent").html(response);
-                    }
-                });
-            }
-
-            $("#search, #min_price, #max_price, #sort_by").on("input change", function() {
-                fetchFilteredData();
-            });
-
-            $(".shop-category ul li a").on("click", function() {
-                $(".shop-category ul li a").removeClass("active");
-                $(this).addClass("active");
-                fetchFilteredData();
-            });
-        });
-    </script> --}}
 @endsection

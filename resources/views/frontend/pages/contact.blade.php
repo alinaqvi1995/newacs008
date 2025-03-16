@@ -4,7 +4,7 @@
 
 <!--Page Header Start-->
 <section class="page-header">
-    <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/page-header-bg.jpg)">
+    <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/new-header-01.jpeg)">
     </div>
     <div class="page-header__ripped-paper"
         style="background-image: url(frontend/assets/images/shapes/page-header-ripped-paper.png);"></div>
@@ -85,7 +85,7 @@
                     <div class="content">
                         <p>Have question?</p>
                         <h4>
-                            <a href="tel:+92309532000">+92 (309) 53 - 2000</a>
+                            <a href="tel:+923095320000">+92 (309) 53 - 20000</a>
                         </h4>
                     </div>
                 </li>
@@ -121,19 +121,7 @@
 </section>
 <!--Contact Details End-->
 
-<!--Google Map Start-->
-{{-- <section class="google-map">
-    <div class="container">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd"
-            class="google-map__one" allowfullscreen></iframe>
-
-    </div>
-</section> --}}
-<!--Google Map End-->
-
 <!--Subscribe One Start-->
 @include('frontend.partials.subscribe')
 <!--Subscribe One End-->
-
 @endsection
