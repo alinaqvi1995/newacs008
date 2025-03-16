@@ -102,10 +102,13 @@
                             <div class="col-xl-12">
                                 <div class="product__showing-result">
                                     <div class="product__showing-text-box">
-                                        <p class="product__showing-text">Showing 1–9 of 12 Results</p>
+                                        <p class="product__showing-text">
+                                            Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of
+                                            {{ $products->total() }} Results
+                                        </p>
                                     </div>
                                     <div class="product__menu-showing-sort">
-                                        <ul class="nav nav-tabs product__list-grid-tabs" id="productListGridTab"
+                                        {{-- <ul class="nav nav-tabs product__list-grid-tabs" id="productListGridTab"
                                             role="tablist">
                                             <li class="nav-item" role="presentation">
                                                 <button class="nav-link active" id="product-grid-tab" data-bs-toggle="tab"
@@ -119,8 +122,7 @@
                                                     aria-controls="product-list" aria-selected="false"><span
                                                         class="icon-list"></span></button>
                                             </li>
-                                        </ul>
-
+                                        </ul> --}}
 
                                         <div class="product__showing-sort">
                                             <div class="select-box">
@@ -215,6 +217,17 @@
                     $('#product-list').html(data);
                 }
             });
+
+            function updateShowingText(currentPage, perPage, totalItems) {
+                let start = (currentPage - 1) * perPage + 1;
+                let end = Math.min(start + perPage - 1, totalItems);
+
+                document.querySelector('.product__showing-text').innerText =
+                    `Showing ${start}–${end} of ${totalItems} Results`;
+            }
+
+            // Example usage
+            updateShowingText(1, 9, 12); // Adjust values dynamically
         });
     </script>
 @endsection
