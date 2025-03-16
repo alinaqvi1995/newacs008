@@ -43,7 +43,7 @@
                                         <div class="product-name-select-box">
                                             <div class="product-name">
                                                 <h4>{{ $item->product->name }}</h4>
-                                                <p>${{ number_format($item->product->price, 2) }}</p>
+                                                <p>RS {{ number_format($item->product->price, 2) }}</p>
                                             </div>
                                             <div class="product-select">
                                                 <a href="{{ route('frontend.products.detail', $item->product->slug) }}"

@@ -76,8 +76,11 @@
                             {{ number_format($product->price, 2) }}</p>
                         <p class="product-list__text">{{ $product->short_description }}</p>
                         <div class="product-list__btn-box">
-                            <a href="cart.html" class="thm-btn product-list__btn">Add to
-                                cart</a>
+                            {{-- <a href="cart.html" class="thm-btn product-list__btn">Add to
+                                cart</a> --}}
+                            <a href="javascript:void(0);" class="thm-btn product-list__btn add-to-cart" data-id="{{ $product->id }}"
+                                data-auth="{{ auth()->check() ? '1' : '0' }}">Add
+                                to cart</a>
                         </div>
                     </div>
                 </div>
