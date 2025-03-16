@@ -116,11 +116,11 @@ aria-labelledby="product-list">
                 </li>
             </ul>
         </div> --}}
-        <div class="shop-page__pagination">
+        {!! $products->links() !!}
+        {{-- <div class="shop-page__pagination">
             <ul class="pg-pagination list-unstyled" id="pagination">
-                {!! $products->links() !!}
             </ul>
-        </div>
+        </div> --}}
     </div>
 </div>
 </div><!-- /.tab-pane -->
