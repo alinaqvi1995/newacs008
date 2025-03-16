@@ -1,6 +1,36 @@
 @extends('frontend.layouts.app')
 @section('title', 'Shop All Products - Indigo Grocery Store')
 @section('content')
+    <style>
+        .pagination a {
+            padding: 8px 12px;
+            /* Adjusts button size */
+            font-size: 14px;
+            /* Adjusts text size */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .pagination a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .pagination .active a {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .pagination a svg {
+            width: 16px;
+            /* Adjusts arrow size */
+            height: 16px;
+            vertical-align: middle;
+        }
+    </style>
     <!--Page Header Start-->
     <section class="page-header">
         <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/new-header-01.jpeg)">
