@@ -109,6 +109,16 @@
                         <div class="tab-content" id="productListGridTabContent">
                             @include('frontend.partials.product_list')
                         </div>
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="shop-page__pagination">
+                                    <ul class="pg-pagination list-unstyled" id="pagination">
+                                        {!! $products->links() !!}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -160,6 +170,20 @@
                 e.preventDefault();
                 let page = $(this).attr("href").split("page=")[1];
                 fetchFilteredData(page);
+            });
+        });
+    </script>
+    <script>
+        $(document).on('click', '.pg-pagination a', function(event) {
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+
+            $.ajax({
+                url: "{{ route('frontend.products.pagination') }}?page=" + page,
+                type: "GET",
+                success: function(data) {
+                    $('#product-list').html(data);
+                }
             });
         });
     </script>

@@ -37,15 +37,6 @@
             @endforeach
         </div>
     </div>
-    {{-- <div class="row">
-        <div class="col-xl-12">
-            <div class="shop-page__pagination">
-                <ul class="pg-pagination list-unstyled" id="pagination">
-                    {!! $products->links() !!}
-                </ul>
-            </div>
-        </div>
-    </div> --}}
 </div>
 <div class="tab-pane fade " id="product-list" role="tabpanel" aria-labelledby="product-list">
     <div class="product-list__inner">
@@ -84,13 +75,4 @@
             </div>
         @endforeach
     </div>
-    {{-- <div class="row">
-        <div class="col-xl-12">
-            <div class="shop-page__pagination">
-                <ul class="pg-pagination list-unstyled" id="pagination">
-                    {!! $products->links() !!}
-                </ul>
-            </div>
-        </div>
-    </div> --}}
 </div>
