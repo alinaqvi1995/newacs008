@@ -68,7 +68,8 @@ class FrontendController extends Controller
             $query->latest();
         }
 
-        $products = $query->paginate(9);
+        $products = $query->get();
+        // $products = $query->paginate(9);
         $categories = Category::where('status', 1)->withCount('products')->get();
         $totalProducts = Product::where('status', 1)
             ->where('visibility', 1)
