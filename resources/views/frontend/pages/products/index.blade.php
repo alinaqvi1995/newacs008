@@ -37,9 +37,9 @@
                                 <div id="slider-range"></div>
                                 <div class="ranger-min-max-block">
                                     <div class="ranger-min-max-block-box">
-                                        <input type="text" id="min_price" readonly class="min">
+                                        <input type="text" id="min_price" class="min">
                                         <span>-</span>
-                                        <input type="text" id="max_price readonly" class="max">
+                                        <input type="text" id="max_price" class="max">
                                     </div>
                                     <div class="product__price-ranger-filter">
                                         <input type="submit" value="Filter">
