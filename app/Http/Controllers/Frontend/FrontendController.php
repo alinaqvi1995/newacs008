@@ -77,7 +77,7 @@ class FrontendController extends Controller
             ]);
         }
 
-        return view('frontend.pages.products.index', compact('products'));
+        return view('frontend.pages.products.index', compact('products', 'categories', 'totalProducts'));
     }
 
     // public function products(Request $request)

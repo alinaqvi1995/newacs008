@@ -214,15 +214,11 @@
                 url: "{{ route('frontend.products') }}?page=" + page,
                 type: "GET",
                 success: function(data) {
-                    $("#product__all").html($(data).find("#product__all").html());
-                    $("#pagination").html($(data).find("#pagination").html());
+                    $("#product__all").html($(data.html).find("#product__all").html());
+                    $("#pagination").html(data.pagination);
 
-                    // Extract pagination data
-                    let firstItem = $(data).find(".product__showing-text").attr("data-first-item");
-                    let lastItem = $(data).find(".product__showing-text").attr("data-last-item");
-                    let totalItems = $(data).find(".product__showing-text").attr("data-total-items");
-
-                    updateShowingText(firstItem, lastItem, totalItems);
+                    // Update the showing results text dynamically
+                    updateShowingText(data.firstItem, data.lastItem, data.total);
                 }
             });
         });
