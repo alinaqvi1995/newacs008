@@ -66,6 +66,10 @@ class FrontendController extends Controller
         }
 
         $products = $query->paginate(10); // Adjust per page as needed
+        $categories = Category::where('status', 1)->withCount('products')->get();
+        $totalProducts = Product::where('status', 1)
+            ->where('visibility', 1)
+            ->get();
 
         if ($request->ajax()) {
             return response()->json([
