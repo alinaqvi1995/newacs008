@@ -1,39 +1,9 @@
 @extends('frontend.layouts.app')
 @section('title', 'Shop All Products - Indigo Grocery Store')
 @section('content')
-    <style>
-        .pagination a {
-            padding: 8px 12px;
-            /* Adjusts button size */
-            font-size: 14px;
-            /* Adjusts text size */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 0 5px;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .pagination a:hover {
-            background-color: #f5f5f5;
-        }
-
-        .pagination .active a {
-            background-color: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-
-        .pagination a svg {
-            width: 16px;
-            /* Adjusts arrow size */
-            height: 16px;
-            vertical-align: middle;
-        }
-    </style>
     <!--Page Header Start-->
     <section class="page-header">
-        <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/new-header-01.jpeg)">
+        <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/page-header-bg.jpg)">
         </div>
         <div class="page-header__ripped-paper"
             style="background-image: url(frontend/assets/images/shapes/page-header-ripped-paper.png);"></div>
@@ -102,13 +72,10 @@
                             <div class="col-xl-12">
                                 <div class="product__showing-result">
                                     <div class="product__showing-text-box">
-                                        <p class="product__showing-text">
-                                            Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of
-                                            {{ $products->total() }} Results
-                                        </p>
+                                        <p class="product__showing-text">Showing 1–9 of 12 Results</p>
                                     </div>
                                     <div class="product__menu-showing-sort">
-                                        {{-- <ul class="nav nav-tabs product__list-grid-tabs" id="productListGridTab"
+                                        <ul class="nav nav-tabs product__list-grid-tabs" id="productListGridTab"
                                             role="tablist">
                                             <li class="nav-item" role="presentation">
                                                 <button class="nav-link active" id="product-grid-tab" data-bs-toggle="tab"
@@ -122,7 +89,8 @@
                                                     aria-controls="product-list" aria-selected="false"><span
                                                         class="icon-list"></span></button>
                                             </li>
-                                        </ul> --}}
+                                        </ul>
+
 
                                         <div class="product__showing-sort">
                                             <div class="select-box">
@@ -141,25 +109,17 @@
                         <div class="tab-content" id="productListGridTabContent">
                             @include('frontend.partials.product_list')
                         </div>
-
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="shop-page__pagination">
-                                    <ul class="pg-pagination list-unstyled" id="pagination">
-                                        {!! $products->links() !!}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!--Product List End-->
+
     <!--Subscribe One Start-->
     @include('frontend.partials.subscribe')
     <!--Subscribe One End-->
+
 @endsection
 @section('script')
     <script>
@@ -205,27 +165,40 @@
             });
         });
     </script>
-    <script>
-        $(document).on('click', '.pg-pagination a', function(event) {
-            event.preventDefault();
-            var page = $(this).attr('href').split('page=')[1];
+    {{-- <script>
+        $(document).ready(function() {
+            function fetchFilteredData() {
+                let search = $("#search").val();
+                let minPrice = $("#min_price").val();
+                let maxPrice = $("#max_price").val();
+                let category = $(".shop-category ul li a.active").data("category");
+                let sortBy = $("#sort_by").val();
 
-            $.ajax({
-                url: "{{ route('frontend.products') }}?page=" + page,
-                type: "GET",
-                success: function(data) {
-                    $("#product__all").html($(data.html).find("#product__all").html());
-                    $("#pagination").html(data.pagination);
+                $.ajax({
+                    url: "{{ route('frontend.products') }}",
+                    method: "GET",
+                    data: {
+                        search: search,
+                        min_price: minPrice,
+                        max_price: maxPrice,
+                        category: category,
+                        sort_by: sortBy
+                    },
+                    success: function(response) {
+                        $("#productListGridTabContent").html(response);
+                    }
+                });
+            }
 
-                    // Update the showing results text dynamically
-                    updateShowingText(data.firstItem, data.lastItem, data.total);
-                }
+            $("#search, #min_price, #max_price, #sort_by").on("input change", function() {
+                fetchFilteredData();
+            });
+
+            $(".shop-category ul li a").on("click", function() {
+                $(".shop-category ul li a").removeClass("active");
+                $(this).addClass("active");
+                fetchFilteredData();
             });
         });
-
-        // Function to update the showing text dynamically
-        function updateShowingText(firstItem, lastItem, totalItems) {
-            $(".product__showing-text").text(`Showing ${firstItem}–${lastItem} of ${totalItems} Results`);
-        }
-    </script>
+    </script> --}}
 @endsection
