@@ -179,7 +179,7 @@
             var page = $(this).attr('href').split('page=')[1];
 
             $.ajax({
-                url: "{{ route('frontend.products.pagination') }}?page=" + page,
+                url: "{{ route('frontend.products') }}?page=" + page,
                 type: "GET",
                 success: function(data) {
                     $('#product-list').html(data);
